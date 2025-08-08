@@ -1,0 +1,10 @@
+@import "../fonts/Rubik/stylesheet.css";
+@import url("./tailwind.scss");
+@import url("./global.scss");
+
+:root {
+  --font-size: 16px;
+  --primary-color: #fff;
+  --secondary-color: rgba(255, 255, 255, 0.7);
+  --card-bg: #1d2837;
+}

@@ -1,14 +1,52 @@
 import { createHttp } from "../../utils/http";
-export default defineEventHandler(async (event) => {
-  const http = createHttp("https://api.openweathermap.org/data/3.0");
-  const res = await http.get("/onecall", {
+export default defineEventHandler(async () => {
+  const http = createHttp("https://api.open-meteo.com/v1");
+  const res = await http.get("/forecast", {
     params: {
-      lat: "7.878978",
-      lon: "98.398392",
-      units: "metric",
-      lang: "ru",
-      appid: process.env.OWM_KEY,
+      latitude: 7.8906,
+      longitude: 98.3981,
+      timezone: "auto",
+
+      // Текущая погода
+      current: [
+        "temperature_2m",
+        "relative_humidity_2m",
+        "apparent_temperature",
+        "is_day",
+        "precipitation",
+        "rain",
+        "showers",
+        "snowfall",
+        "wind_gusts_10m",
+        "wind_direction_10m",
+        "wind_speed_10m",
+        "weather_code",
+        "cloud_cover",
+        "pressure_msl",
+        "surface_pressure",
+      ],
+
+      // Почасовая погода на 48 часов
+      hourly: [
+        "temperature_2m",
+        "apparent_temperature",
+        "relative_humidity_2m",
+        "dew_point_2m",
+        "cloud_cover",
+        "precipitation",
+        "rain",
+        "showers",
+        "snowfall",
+        "wind_speed_10m",
+        "wind_direction_10m",
+        "wind_gusts_10m",
+        "uv_index",
+        "visibility",
+        "is_day",
+        "weathercode",
+      ],
     },
   });
+
   return res.data;
 });

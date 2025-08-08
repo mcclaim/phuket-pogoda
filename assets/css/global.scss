@@ -1,0 +1,26 @@
+body {
+  color: var(--primary-color);
+  font-size: var(--font-size);
+  font-weight: 400;
+  font-family: "Rubik", "Manrope", sans-serif;
+}
+
+.layout {
+  &__glass {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.3px);
+    -webkit-backdrop-filter: blur(6.3px);
+    border-top: 1px solid rgba(255, 255, 255, 0.24);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  }
+}
+
+.glass {
+  background: rgba(58, 155, 255, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}

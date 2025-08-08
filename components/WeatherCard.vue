@@ -1,23 +1,25 @@
 <template>
-  <div class="rounded-2xl bg-white shadow p-5 flex items-center gap-4">
-    <img :src="iconUrl" alt="icon" class="w-16 h-16" />
-    <div>
-      <h3 class="text-lg font-semibold">Сейчас на Пхукете</h3>
-      <p class="text-3xl font-bold">{{ Math.round(data.main.temp) }}°C</p>
-      <p class="text-gray-600 capitalize">{{ data.weather[0].description }}</p>
+  <div class="gap-4 glass p-4">
+    <div class="">
+      <!-- <img :src="iconUrl" alt="icon" class="w-16 h-16" /> -->
+      <h2 class="text-3xl font-semibold">Текущая погода на Пхукете</h2>
+      <p class="text-6xl font-extrabold text-lime-300">
+        {{ Math.round(weather.temperature_2m) }}°C
+      </p>
+      <p class="text-xl">
+        Ощущается как:
+        <span class="text-lime-400 font-extrabold"
+          >{{ Math.round(weather.apparent_temperature) }}°C</span
+        >
+      </p>
     </div>
-    <div class="ml-auto text-sm text-gray-500">
-      <div>Ощущается как: {{ Math.round(data.main.feels_like) }}°C</div>
-      <div>Влажность: {{ data.main.humidity }}%</div>
-      <div>Ветер: {{ data.wind.speed }} м/с</div>
+    <div class="ml-auto">
+      <div>Ощущается как: {{ Math.round(weather.apparent_temperature) }}°C</div>
+      <div>Направление ветра: {{ weather.wind_direction_10m }}°</div>
+      <div>День или ночь: {{ weather.is_day ? "День" : "Ночь" }}</div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from "vue";
-
-const props = defineProps<{ data: any }>();
-const iconUrl = computed(
-  () => `https://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`
-);
+const props = defineProps<{ weather: any }>();
 </script>
