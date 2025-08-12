@@ -22,7 +22,7 @@ import AppHeader from "./components/AppHeader.vue";
   @apply min-h-screen relative flex flex-col;
 
   &:before {
-    background: url("~/assets/images/bg-4.jpg") no-repeat center center fixed;
+    background: url("~/assets/images/bg-5.jpg") no-repeat center center fixed;
     content: "";
     @apply absolute top-0 left-0 right-0 bottom-0 bg-cover;
   }

@@ -18,6 +18,7 @@ export const useWeather = () => {
 
     return {
       current: data.value?.current,
+      currentUnits: data.value?.current_units,
       hourly: data.value?.hourly,
       pending,
     };
