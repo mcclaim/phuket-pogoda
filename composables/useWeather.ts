@@ -7,7 +7,7 @@ export const useWeather = () => {
 
   const getCurrent = async () => {
     const { data, error, pending } = await useFetch("/api/weather/current", {
-      query: { latitude: 7.8906, longitude: 98.3981, timezone: "auto" },
+      query: { ...location },
     });
     if (error.value) {
       throw createError({

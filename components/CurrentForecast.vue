@@ -1,15 +1,17 @@
 <template>
   <div class="glass p-6">
-    <h2 class="text-3xl font-semibold">Текущая погода</h2>
+    <h2 class="text-2xl sm:text-3xl font-semibold">Текущая погода</h2>
     <div class="grid grid-cols-12 gap-4">
-      <div class="flex items-center col-span-12 pt-6 pb-1 pl-[5.5rem] relative">
+      <div
+        class="flex items-center col-span-12 pt-2 pb-1 pl-[3.8rem] sm:pt-6 sm:pl-[5.5rem] relative"
+      >
         <img
           :src="iconUrl"
           alt="icon"
-          class="w-[100px] h-[100px] absolute top-[-0.2rem] left-[-1rem]"
+          class="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] top-[0] sm:top-[-0.2rem] left-[-1rem] absolute"
         />
-        <p class="md:text-3xl lg:text-5xl font-extrabold">
-          <span class="text-6xl text-lime-300"
+        <p class="text-xl md:text-3xl lg:text-5xl font-extrabold">
+          <span class="text-5xl sm:text-6xl text-lime-300"
             >{{ Math.round(weather.temperature_2m) }}°C
           </span>
           /
@@ -17,7 +19,7 @@
         </p>
       </div>
 
-      <div class="sm:col-span-6 lg:col-span-3 text-lg">
+      <div class="col-span-12 sm:col-span-6 lg:col-span-3 text-lg">
         <p>
           Ощущается как:
           <span class="text-lime-300 font-bold"
@@ -38,7 +40,9 @@
         </p>
       </div>
 
-      <div class="sm:col-span-12 lg:col-span-3 text-lg sm:order-1">
+      <div
+        class="col-span-12 sm:col-span-12 lg:col-span-6 text-lg order-1 lg:-order-none"
+      >
         <p>
           Купание:
           <span class="text-lime-300 font-bold">{{ canSwimData }}</span>
@@ -59,7 +63,7 @@
         </p>
       </div>
 
-      <div class="sm:col-span-6 lg:col-span-3 text-lg">
+      <div class="col-span-12 sm:col-span-6 lg:col-span-3 text-lg">
         <p>
           Давление:
           <span class="text-lime-300 font-bold"

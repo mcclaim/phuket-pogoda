@@ -1,9 +1,14 @@
 <template>
-  <section v-if="current">
-    <WeatherCard :weather="current" />
-  </section>
+  <div class="flex flex-col gap-6">
+    <section v-if="current">
+      <CurrentForecast :weather="current" />
+    </section>
 
-  <h2>Погода за 48 часов</h2>
+    <section v-if="hourly">
+      <HourlyForecast :hours="hourly" />
+    </section>
+  </div>
+
   <!-- <div class="space-y-6">
     <section class="bg-white rounded-2xl shadow p-6">
       <h1 class="text-2xl font-bold mb-2">Погода на Пхукете</h1>
