@@ -42,7 +42,7 @@ export function getIconFromWeatherCode(
   }
 }
 
-export function getWeatherIcon(weatherCode: number): string {
-  const icon = getIconFromWeatherCode(weatherCode);
-  return `~/assets/images/weather-icons/${icon}.svg`; // Assuming icons are stored in the public/icons directory
+export function getWeatherIcon(weatherCode: number, isDay = true): string {
+  const icon = getIconFromWeatherCode(weatherCode, isDay);
+  return `/images/icons/weather-icons/${icon}.svg`;
 }
