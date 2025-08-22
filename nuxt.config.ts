@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
+    "@nuxt/image",
   ],
   css: ["@/assets/css/settings.scss"],
   nitro: {

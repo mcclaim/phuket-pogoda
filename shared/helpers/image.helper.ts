@@ -1,13 +1,11 @@
-export function dynamicIcon(iconName: string): string {
-  return new URL(
-    `../../assets/images/weather-icons/${iconName}.svg`,
-    import.meta.url
-  ).href;
+export function iconUrl(icon: string): string {
+  return `/images/icons/${icon}.svg`;
+}
+
+export function weatherIconUrl(icon: string): string {
+  return `/images/icons/weather-icons/${icon}.svg`;
 }
 
 export function uvImage(uv: number): string {
-  return new URL(
-    `../../assets/images/weather-icons/uv-index-${Math.round(uv)}.svg`,
-    import.meta.url
-  ).href;
+  return weatherIconUrl(`uv-index-${Math.round(uv)}`);
 }

@@ -1,3 +1,5 @@
+import { weatherIconUrl } from "./image.helper";
+
 export function getIconFromWeatherCode(
   weatherCode: number,
   isDay = true
@@ -42,7 +44,10 @@ export function getIconFromWeatherCode(
   }
 }
 
-export function getWeatherIcon(weatherCode: number, isDay = true): string {
+export function getWeatherIconWithDay(
+  weatherCode: number,
+  isDay = true
+): string {
   const icon = getIconFromWeatherCode(weatherCode, isDay);
-  return `/images/icons/weather-icons/${icon}.svg`;
+  return weatherIconUrl(icon);
 }
