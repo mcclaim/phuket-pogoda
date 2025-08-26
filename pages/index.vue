@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col gap-6">
-    <!-- <section v-if="current">
+    <section v-if="current">
       <CurrentForecast :weather="current" />
-    </section> -->
+    </section>
 
     <section v-if="hourly">
       <HourlyForecast :hours="hourly" />

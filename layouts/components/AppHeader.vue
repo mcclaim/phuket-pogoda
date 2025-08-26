@@ -8,27 +8,44 @@ const dropdownOpen = ref(false);
 const toggleDropdown = () => {
   dropdownOpen.value = !dropdownOpen.value;
 };
+
+function dropDownActive() {
+  const paths = [
+    "/forecast/tomorrow",
+    "/forecast/week",
+    "/forecast/10days",
+    "/forecast/weekend",
+    "/forecast/month",
+  ];
+  return paths.includes(useRoute().path);
+}
 </script>
 
 <template>
-  <header class="layout__glass">
+  <header class="header layout__glass !backdrop-blur-none">
     <div
       class="container xl:max-w-7xl mx-auto flex items-center justify-between"
     >
-      <NuxtLink to="/" class="px-4 py-3">
-        <img src="~/assets/images/logo.svg" alt="Logo" class="mr-2" />
+      <NuxtLink to="/" class="px-4 py-3 relative z-[1]">
+        <img
+          src="~/assets/images/logo.svg"
+          alt="Logo"
+          class="w-full max-w-[93%] sm:max-w-full"
+        />
       </NuxtLink>
+
+      <div class="header__backdrop"></div>
 
       <!-- Бургер (только мобилка) -->
       <button
         type="button"
         command="--toggle"
         commandfor="mobile-menu"
-        class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 bg-white/55 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500"
+        class="header__burger-button"
         @click="isOpen = !isOpen"
       >
         <span class="absolute -inset-0.5"></span>
-        <span class="sr-only">Open main menu</span>
+        <span class="sr-only">Основное меню</span>
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -64,14 +81,17 @@ const toggleDropdown = () => {
         </svg>
       </button>
 
+      <!-- Задный фон меню -->
+      <div
+        v-if="isOpen"
+        class="fixed inset-0 z-[1001] bg-black bg-opacity-50 backdrop-blur-sm md:hidden"
+        @click="isOpen = false"
+      ></div>
+
       <!-- Меню -->
       <nav
-        class="nav md:flex md:items-center"
-        :class="
-          isOpen
-            ? 'block absolute top-full left-0 w-full bg-white border-t border-gray-200 md:static md:w-auto md:bg-transparent md:border-none'
-            : 'hidden md:flex'
-        "
+        class="nav md:flex md:items-center relative z-[1]"
+        :class="isOpen ? 'nav__open' : 'nav__closed'"
       >
         <!-- Главная -->
         <NuxtLink
@@ -92,7 +112,13 @@ const toggleDropdown = () => {
 
         <!-- Прогноз -->
         <div class="relative group">
-          <button class="flex items-center nav__link" @click="toggleDropdown">
+          <button
+            class="nav__link w-full xs:w-none"
+            :class="{
+              active: dropDownActive(),
+            }"
+            @click="toggleDropdown"
+          >
             <NuxtImg
               src="/images/icons/weather.svg"
               alt="Articles"
@@ -103,7 +129,7 @@ const toggleDropdown = () => {
 
             <span>Прогноз</span>
             <svg
-              class="w-4 h-4 ml-1 transition-transform"
+              class="w-5 h-5 ml-auto transition-transform md:w-4 md:h-4 md:ml-1"
               :class="{ 'rotate-180': dropdownOpen }"
               fill="none"
               stroke="currentColor"
@@ -120,22 +146,42 @@ const toggleDropdown = () => {
 
           <!-- Дропдаун -->
           <div
-            v-if="dropdownOpen"
-            class="md:absolute left-0 mt-2 md:w-56 bg-white border border-gray-200 shadow-lg rounded-md py-2"
+            class="header__dropdown !block"
+            :class="{ 'md:!hidden': !dropdownOpen }"
           >
-            <NuxtLink to="/forecast/tomorrow" class="dropdown__item">
+            <NuxtLink
+              to="/forecast/tomorrow"
+              class="header__dropdown-item"
+              active-class="active"
+            >
               Завтра
             </NuxtLink>
-            <NuxtLink to="/forecast/week" class="dropdown__item">
+            <NuxtLink
+              to="/forecast/week"
+              class="header__dropdown-item"
+              active-class="active"
+            >
               На неделю
             </NuxtLink>
-            <NuxtLink to="/forecast/10days" class="dropdown__item">
+            <NuxtLink
+              to="/forecast/10days"
+              class="header__dropdown-item"
+              active-class="active"
+            >
               На 10 дней
             </NuxtLink>
-            <NuxtLink to="/forecast/weekend" class="dropdown__item">
+            <NuxtLink
+              to="/forecast/weekend"
+              class="header__dropdown-item"
+              active-class="active"
+            >
               На выходные
             </NuxtLink>
-            <NuxtLink to="/forecast/month" class="dropdown__item">
+            <NuxtLink
+              to="/forecast/month"
+              class="header__dropdown-item"
+              active-class="active"
+            >
               На месяц
             </NuxtLink>
           </div>
@@ -144,7 +190,7 @@ const toggleDropdown = () => {
         <!-- Статьи -->
         <NuxtLink
           to="/articles/pogoda-na-phukete"
-          class="nav__link flex items-center gap-2"
+          class="nav__link gap-2"
           active-class="active"
         >
           <NuxtImg
@@ -163,20 +209,51 @@ const toggleDropdown = () => {
 
 <style scoped lang="scss">
 .layout__glass {
-  @apply border-t-0 sticky top-0 z-50;
+  @apply border-t-0 sticky top-0 z-[51];
+}
+
+.header {
+  &__burger-button {
+    @apply relative inline-flex items-center justify-center rounded-md p-2 mx-3 text-black bg-white md:hidden sm:mx-0;
+  }
+
+  &__backdrop {
+    @apply backdrop-blur-[6.3px] block w-full h-full left-0 top-0 absolute;
+  }
 }
 
 .nav {
+  @media screen and (max-width: 767px) {
+    @apply fixed top-0 bottom-0 left-0 z-[1011] w-4/5 min-w-[260px] max-w-full p-0 overflow-y-auto text-center bg-[#2d2d2d] shadow-[0_3px_50px_rgba(0,0,0,0.7)] flex flex-col transition-transform duration-300 ease-in-out -translate-x-[110%];
+  }
+
   &__link {
-    @apply hover:bg-white hover:bg-opacity-30 py-4 px-4 transition font-medium;
+    @apply text-gray-50 bg-opacity-30 sm:bg-opacity-0 py-4 px-4 transition font-medium flex items-center hover:bg-white hover:bg-opacity-30;
+
+    &:has(~ .header__dropdown) {
+      @media screen and (max-width: 767px) {
+        @apply bg-white bg-opacity-30;
+      }
+    }
 
     &.active {
       @apply bg-white bg-opacity-20;
     }
   }
+  &__open {
+    @apply translate-x-0;
+  }
 }
 
-.dropdown__item {
-  @apply flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition;
+.header__dropdown {
+  @apply left-0 rounded-none mt-0 md:w-56 bg-white border border-gray-200 shadow-lg py-2 md:absolute md:rounded-md md:mt-2;
+
+  &-item {
+    @apply flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-lime-600 transition;
+
+    &.active {
+      @apply bg-lime-600 text-white;
+    }
+  }
 }
 </style>

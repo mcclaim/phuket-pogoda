@@ -2,7 +2,7 @@
   <div id="app">
     <AppHeader />
 
-    <main class="flex-1 py-4 relative z-10">
+    <main class="flex-1 py-4 relative z-[1]">
       <div class="container xl:max-w-7xl mx-auto px-4">
         <NuxtPage />
       </div>

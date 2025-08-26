@@ -2,7 +2,7 @@ import { weatherIconUrl } from "./image.helper";
 
 export function getIconFromWeatherCode(
   weatherCode: number,
-  isDay = true
+  isDay: number
 ): string {
   switch (weatherCode) {
     case 0:
@@ -46,7 +46,7 @@ export function getIconFromWeatherCode(
 
 export function getWeatherIconWithDay(
   weatherCode: number,
-  isDay = true
+  isDay: number
 ): string {
   const icon = getIconFromWeatherCode(weatherCode, isDay);
   return weatherIconUrl(icon);
