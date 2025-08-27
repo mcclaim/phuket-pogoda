@@ -24,7 +24,7 @@ const props = defineProps<{
       class="flex justify-between items-center flex-col text-center sm:flex-row sm:text-left"
     >
       <div class="flex flex-col">
-        <div class="font-light">{{ formatTime(weatherData.time) }}</div>
+        <div class="font-medium">{{ formatTime(weatherData.time) }}</div>
         <div class="text-3xl font-bold py-1">
           {{ weatherData.temperature_2m }}°C
         </div>

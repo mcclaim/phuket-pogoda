@@ -1,5 +1,6 @@
 import { createHttp } from "../../utils/http";
 export default defineEventHandler(async () => {
+  console.log("ttttttttttttttttttttttttttttttttt");
   const http = createHttp("https://api.open-meteo.com/v1");
   const res = await http.get("/forecast", {
     params: {

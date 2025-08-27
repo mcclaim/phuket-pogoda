@@ -9,6 +9,13 @@
   --card-bg: #1d2837;
 }
 
+/* Plugins settings */
+.swiper-grid-column > .swiper-wrapper {
+  display: grid;
+  grid-template-rows: 0.5fr 0.5fr;
+  grid-auto-flow: column;
+}
+
 @media screen and (max-width: 1024px) {
   :root {
     --font-size: 14px;

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { FreeMode, Navigation } from "swiper/modules";
+import { FreeMode, Grid } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/scrollbar";
+import "swiper/css/grid";
 
 import { iconUrl } from "~/shared/helpers/image.helper";
 import type { WeatherHourlyArray } from "~/shared/types/WeatherData.type";
@@ -83,16 +83,12 @@ function goNext() {
       </button>
 
       <swiper
-        :modules="[FreeMode, Navigation]"
-        :slides-per-view="'auto'"
+        :modules="[Grid]"
         :space-between="20"
-        navigation
-        :free-mode="{
-          enabled: true,
-          sticky: false,
-          momentum: true,
-        }"
-        :grab-cursor="true"
+        :loop="false"
+        :slidesPerGroupAuto="true"
+        :slidesPerGroup="8"
+        :grid="{ rows: 2, fill: 'column' }"
         :breakpoints="{
           320: { slidesPerView: 1.5, spaceBetween: 16 },
           430: { slidesPerView: 2, spaceBetween: 16 },
@@ -131,5 +127,3 @@ function goNext() {
     </div>
   </div>
 </template>
-
-<style></style>

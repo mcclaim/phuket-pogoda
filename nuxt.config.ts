@@ -1,5 +1,16 @@
 // Nuxt 3 configuration
 export default defineNuxtConfig({
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: "ru",
+      },
+      title: "title",
+      charset: "utf-8",
+      meta: [],
+      link: [],
+    },
+  },
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxt/content",
@@ -18,13 +29,11 @@ export default defineNuxtConfig({
     },
   },
   sitemap: {
-    siteUrl: process.env.SITE_URL || "https://phuket-pogoda.ru",
     sitemaps: false,
     autoLastmod: true,
-    cacheMaxAge: 600,
   },
   robots: {
-    rules: [{ userAgent: "*", allow: "/" }],
+    rules: [{ UserAgent: "*", Allow: "/" }],
     sitemap:
       (process.env.SITE_URL || "https://phuket-pogoda.ru") + "/sitemap.xml",
   },

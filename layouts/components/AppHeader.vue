@@ -246,7 +246,7 @@ function dropDownActive() {
 }
 
 .header__dropdown {
-  @apply left-0 rounded-none mt-0 md:w-56 bg-white border border-gray-200 shadow-lg py-2 md:absolute md:rounded-md md:mt-2;
+  @apply left-0 rounded-none mt-0 md:w-56 bg-white shadow-lg py-2 md:absolute md:rounded-md md:mt-2;
 
   &-item {
     @apply flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-lime-600 transition;
