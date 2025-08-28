@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { FreeMode, Grid } from "swiper/modules";
+import { FreeMode } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/grid";
+import "swiper/css/scrollbar";
 
 import { iconUrl } from "~/shared/helpers/image.helper";
 import type { WeatherHourlyArray } from "~/shared/types/WeatherData.type";
@@ -83,12 +83,15 @@ function goNext() {
       </button>
 
       <swiper
-        :modules="[Grid]"
+        :modules="[FreeMode]"
         :space-between="20"
         :loop="false"
-        :slidesPerGroupAuto="true"
-        :slidesPerGroup="8"
-        :grid="{ rows: 2, fill: 'column' }"
+        :free-mode="{
+          enabled: true,
+          sticky: false,
+          momentum: true,
+        }"
+        :grab-cursor="true"
         :breakpoints="{
           320: { slidesPerView: 1.5, spaceBetween: 16 },
           430: { slidesPerView: 2, spaceBetween: 16 },
@@ -110,7 +113,7 @@ function goNext() {
           :key="index"
         >
           <WeatherCard
-            :weatherData="{
+            :weather-data="{
             time,
             temperature_2m: hours.temperature_2m[index],
             apparent_temperature: hours.apparent_temperature[index],

@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { useHead } from "nuxt/app";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Grid } from "swiper/modules";
+import { FreeMode, Grid } from "swiper/modules";
 import { getTomorrowWeather } from "~/shared/helpers/weatherCalcs.helper";
 import { iconUrl } from "~/shared/helpers/image.helper";
 
 import "swiper/css";
 import "swiper/css/grid";
+import "swiper/css/scrollbar";
+import Loader from "~/components/Loader.vue";
 
 useHead({
   title:
@@ -14,7 +16,7 @@ useHead({
 });
 
 const { getCurrent } = useWeather();
-const { current, hourly, pending } = await getCurrent();
+const { hourly, pending } = await getCurrent();
 
 // Swiper refs
 const swiperRef = ref<any>(null);
@@ -51,10 +53,12 @@ function goNext() {
 <template>
   <div class="glass p-6">
     <h1
-      class="text-xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg mb-6"
+      class="text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg mb-6"
     >
       Погода в Пхукете на завтра
     </h1>
+
+    <Loader v-if="pending" />
 
     <div class="relative" v-if="!pending && hourly">
       <!-- SSR-рендер (SEO): статичная сетка -->
@@ -65,7 +69,8 @@ function goNext() {
         <WeatherCard
           v-for="(time, index) in getTomorrowWeather(hourly).time"
           :key="index"
-          :weatherData="{
+          is-hourly
+          :weather-data="{
             time,
             temperature_2m: hourly.temperature_2m[index],
             apparent_temperature: hourly.apparent_temperature[index],
@@ -122,20 +127,55 @@ function goNext() {
         </button>
 
         <swiper
-          :modules="[Grid]"
+          :modules="[Grid, FreeMode]"
           :space-between="20"
           :loop="false"
-          :slidesPerGroupAuto="true"
-          :slidesPerGroup="8"
-          :grid="{ rows: 2, fill: 'column' }"
+          :grab-cursor="true"
+          :grid="{
+            rows: 2,
+            fill: 'column',
+          }"
+          :free-mode="{
+            enabled: true,
+            sticky: false,
+            momentum: true,
+          }"
           :breakpoints="{
-            320: { slidesPerView: 1.5, spaceBetween: 16 },
-            430: { slidesPerView: 2, spaceBetween: 16 },
-            500: { slidesPerView: 2, spaceBetween: 16 },
-            640: { slidesPerView: 2, spaceBetween: 20 },
-            768: { slidesPerView: 2.5, spaceBetween: 20 },
-            1024: { slidesPerView: 3, spaceBetween: 20 },
-            1280: { slidesPerView: 4, spaceBetween: 20 },
+            320: {
+              slidesPerView: 1.5,
+              spaceBetween: 16,
+              grid: { rows: 2, fill: 'column' },
+            },
+            430: {
+              slidesPerView: 2,
+              spaceBetween: 16,
+              grid: { rows: 2, fill: 'column' },
+            },
+            500: {
+              slidesPerView: 2,
+              spaceBetween: 16,
+              grid: { rows: 2, fill: 'column' },
+            },
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+              grid: { rows: 2, fill: 'column' },
+            },
+            768: {
+              slidesPerView: 2.5,
+              spaceBetween: 20,
+              grid: { rows: 2, fill: 'column' },
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+              grid: { rows: 2, fill: 'column' },
+            },
+            1280: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+              grid: { rows: 2, fill: 'column' },
+            },
           }"
           @swiper="onSwiper"
           @touch-end="updateShadows"
@@ -149,7 +189,7 @@ function goNext() {
             :key="index"
           >
             <WeatherCard
-              :weatherData="{
+              :weather-data="{
                 time,
                 temperature_2m: hourly.temperature_2m[index],
                 apparent_temperature: hourly.apparent_temperature[index],
@@ -159,6 +199,7 @@ function goNext() {
                 wind_speed_10m: hourly.wind_speed_10m[index],
                 precipitation: hourly.precipitation[index],
               }"
+              is-hourly
               card-class="!shadow-none"
             />
           </swiper-slide>

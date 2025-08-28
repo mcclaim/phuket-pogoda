@@ -1,10 +1,12 @@
 <template>
   <div class="flex flex-col gap-6">
-    <section v-if="current">
+    <Loader v-if="pending" />
+
+    <section v-if="!pending && current">
       <CurrentForecast :weather="current" />
     </section>
 
-    <section v-if="hourly">
+    <section v-if="!pending && hourly">
       <HourlyForecast :hours="hourly" />
     </section>
   </div>

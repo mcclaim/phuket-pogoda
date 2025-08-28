@@ -1,6 +1,5 @@
 import { createHttp } from "../../utils/http";
 export default defineEventHandler(async () => {
-  console.log("ttttttttttttttttttttttttttttttttt");
   const http = createHttp("https://api.open-meteo.com/v1");
   const res = await http.get("/forecast", {
     params: {
@@ -31,18 +30,9 @@ export default defineEventHandler(async () => {
       hourly: [
         "temperature_2m",
         "apparent_temperature",
-        "relative_humidity_2m",
-        "dew_point_2m",
-        "cloud_cover",
         "precipitation",
-        "rain",
-        "showers",
-        "snowfall",
         "wind_speed_10m",
-        "wind_direction_10m",
-        "wind_gusts_10m",
         "uv_index",
-        "visibility",
         "is_day",
         "weathercode",
       ],

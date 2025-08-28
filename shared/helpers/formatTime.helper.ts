@@ -6,3 +6,10 @@ export function formatTime(time: string) {
     month: "long",
   });
 }
+
+export function formatDate(time: string) {
+  return new Date(time).toLocaleString("ru-RU", {
+    day: "numeric",
+    month: "long",
+  });
+}

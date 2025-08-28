@@ -25,15 +25,19 @@ export const useWeather = () => {
   };
 
   const getForecast = async () => {
-    const { data, error } = await useFetch("/api/weather/forecast", {
-      query: { city: "Phuket" },
+    const { data, error, pending } = await useFetch("/api/weather/forecast", {
+      query: { ...location },
     });
-    if (error.value)
+
+    if (error.value) {
       throw createError({
         statusCode: 500,
-        statusMessage: "Failed to load forecast",
+        statusMessage: "Failed to load current weather",
       });
-    return data.value;
+    }
+
+    return { daily: data.value?.daily, pending };
   };
+
   return { getCurrent, getForecast };
 };
