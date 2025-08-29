@@ -7,7 +7,7 @@ import {
 } from "~/shared/helpers/image.helper";
 import { canSwimUvIndex } from "~/shared/helpers/canSwim.helper";
 import { getWeatherIconWithDay } from "~/shared/helpers/weatherCode.helper";
-import type { WeatherHourlyItem } from "~/shared/types/WeatherData.type";
+import type { WeatherHourlyItem } from "~/shared/types/WeatherDataHourly.type";
 
 const props = defineProps<{
   weatherData: WeatherHourlyItem;
@@ -63,7 +63,7 @@ const props = defineProps<{
         {{ weatherData.uv_index }}
 
         <div
-          class="absolute left-[0] bottom-full mb-2 hidden group-hover:block bg-gray-800 text-white text-xs rounded px-2 py-1 whitespace-nowrap z-[1]"
+          class="absolute left-[0] bottom-full mb-2 hidden group-hover:block bg-white text-gray-900 font-medium text-xs rounded px-2 py-1 whitespace-nowrap z-[1]"
         >
           {{ canSwimUvIndex(weatherData.uv_index) }}
         </div>

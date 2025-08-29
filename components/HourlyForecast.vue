@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 
 import { iconUrl } from "~/shared/helpers/image.helper";
-import type { WeatherHourlyArray } from "~/shared/types/WeatherData.type";
+import type { WeatherHourlyArray } from "~/shared/types/WeatherDataHourly.type";
 import WeatherCard from "./WeatherCard.vue";
 import { getNext24Hours } from "~/shared/helpers/weatherCalcs.helper";
 

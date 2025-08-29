@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { useHead } from "nuxt/app";
 import WeatherCardDaily from "~/components/WeatherCardDaily.vue";
 import Loader from "~/components/Loader.vue";
+
+import { useHead } from "nuxt/app";
+import { getWeeklyWeather } from "~/shared/helpers/weatherCalcs.helper";
 
 useHead({
   title:
@@ -22,9 +24,12 @@ const { daily, pending } = await getForecast();
 
     <Loader v-if="pending" />
 
-    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div
+      v-if="!pending && daily"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+    >
       <WeatherCardDaily
-        v-for="(time, index) in daily.time"
+        v-for="(time, index) in getWeeklyWeather(daily).time"
         :key="index"
         is-hourly
         :weather-data="{
@@ -41,7 +46,6 @@ const { daily, pending } = await getForecast();
           sunrise: daily.sunrise[index],
           sunset: daily.sunset[index],
         }"
-        card-class="!shadow-none"
       />
     </div>
   </div>

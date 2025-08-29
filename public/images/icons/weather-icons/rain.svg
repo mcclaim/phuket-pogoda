@@ -6,9 +6,9 @@
             <stop offset="1" stop-color="#deeafb"/>
         </linearGradient>
         <linearGradient id="b" x1="1381.32" y1="-1144.67" x2="1399.47" y2="-1097.39" gradientTransform="translate(-1189.41 1353.24) rotate(-9)" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#0b65ed"/>
-            <stop offset="0.45" stop-color="#0a5ad4"/>
-            <stop offset="1" stop-color="#0950bc"/>
+            <stop offset="0" stop-color="#cedff8ff"/>
+            <stop offset="0.45" stop-color="#e9eef5ff"/>
+            <stop offset="1" stop-color="#cedff8ff"/>
         </linearGradient>
         <linearGradient id="c" x1="1436.71" y1="-1137" x2="1454.86" y2="-1089.72" gradientTransform="translate(-1189.32 1354.33) rotate(-9)" xlink:href="#b"/>
         <linearGradient id="d" x1="1492.12" y1="-1129.34" x2="1510.27" y2="-1082.06" gradientTransform="translate(-1189.24 1355.43) rotate(-9)" xlink:href="#b"/>

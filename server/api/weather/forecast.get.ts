@@ -6,6 +6,7 @@ export default defineEventHandler(async () => {
       latitude: 7.8906,
       longitude: 98.3981,
       timezone: "auto",
+      forecast_days: 16,
 
       // Текущая погода
       daily: [

@@ -3,11 +3,11 @@ import WeatherCardDaily from "~/components/WeatherCardDaily.vue";
 import Loader from "~/components/Loader.vue";
 
 import { useHead } from "nuxt/app";
-import { getTenDayWeather } from "~/shared/helpers/weatherCalcs.helper";
+import { getFifteenDayWeather } from "~/shared/helpers/weatherCalcs.helper";
 
 useHead({
   title:
-    "Погода в Пхукете на 10 дней, прогноз погоды Пхукета на десять дней, Пхукет, Таиланд",
+    "Погода в Пхукете на 15 дней, прогноз погоды Пхукета на пятнадцать дней, Пхукет, Таиланд",
 });
 
 const { getForecast } = useWeather();
@@ -19,7 +19,7 @@ const { daily, pending } = await getForecast();
     <h1
       class="text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg mb-6"
     >
-      Погода в Пхукете на 10 дней
+      Погода в Пхукете на 15 дней
     </h1>
 
     <Loader v-if="pending" />
@@ -29,7 +29,7 @@ const { daily, pending } = await getForecast();
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
     >
       <WeatherCardDaily
-        v-for="(time, index) in getTenDayWeather(daily).time"
+        v-for="(time, index) in getFifteenDayWeather(daily).time"
         :key="index"
         is-hourly
         :weather-data="{

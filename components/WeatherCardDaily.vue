@@ -1,5 +1,9 @@
 <script lang="ts" setup>
-import { formatDate } from "~/shared/helpers/formatTime.helper";
+import {
+  formatDate,
+  formatOnlyTime,
+  formatSecondsToHours,
+} from "~/shared/helpers/formatTime.helper";
 import {
   iconUrl,
   uvImage,
@@ -56,9 +60,62 @@ const props = defineProps<{
       </span>
     </div>
 
-    <hr class="hr1 mt-2 hidden sm:block" />
+    <hr class="hr1 mt-2 sm:block" />
 
-    <div class="hidden grid-cols-3 mt-3 sm:grid">
+    <div class="grid grid-cols-3 mt-3">
+      <div
+        class="flex-shrink-0 flex flex-col items-center hr2-section text-sm group"
+      >
+        <NuxtImg
+          :src="weatherIconUrl('sunrise')"
+          height="35"
+          width="35"
+          class="w-[35px] h-[35px]"
+          alt=""
+          densities="x1 x2"
+        />
+
+        {{ formatOnlyTime(weatherData.sunrise) }}
+      </div>
+
+      <div
+        class="flex-shrink-0 flex flex-col items-center text-center hr2-section text-sm"
+      >
+        <NuxtImg
+          :src="weatherIconUrl('sunset')"
+          height="35"
+          width="35"
+          class="w-[35px] h-[35px]"
+          alt=""
+          densities="x1 x2"
+        />
+        {{ formatOnlyTime(weatherData.sunset) }}
+      </div>
+
+      <div
+        class="flex-shrink-0 flex flex-col items-center text-sm group relative z-[1]"
+      >
+        <NuxtImg
+          :src="weatherIconUrl('horizon')"
+          height="35"
+          width="35"
+          class="w-[35px] h-[35px]"
+          alt=""
+          densities="x1 x2"
+        />
+        {{ formatSecondsToHours(weatherData.daylight_duration) }}
+
+        <div
+          class="absolute left-[0] bottom-full mb-2 hidden group-hover:block bg-white text-gray-900 font-medium text-xs rounded px-2 py-1 whitespace-nowrap z-[1]"
+        >
+          Продолжительность дневного света
+        </div>
+      </div>
+    </div>
+
+    <hr class="hr1 mt-2 sm:block" />
+
+    <div class="grid grid-cols-3 mt-3">
       <div
         class="flex-shrink-0 flex flex-col items-center hr2-section text-sm group relative z-[1]"
       >
@@ -73,7 +130,7 @@ const props = defineProps<{
         {{ weatherData.uv_index_max }}
 
         <div
-          class="absolute left-[0] bottom-full mb-2 hidden group-hover:block bg-gray-800 text-white text-xs rounded px-2 py-1 whitespace-nowrap z-[1]"
+          class="absolute left-[0] bottom-full mb-2 hidden group-hover:block bg-white text-gray-900 font-medium text-xs rounded px-2 py-1 whitespace-nowrap z-[1]"
         >
           {{ canSwimUvIndex(weatherData.uv_index_max) }}
         </div>
@@ -105,8 +162,6 @@ const props = defineProps<{
         {{ weatherData.precipitation_sum }} мм
       </div>
     </div>
-
-    <hr class="hr1 mt-2 hidden sm:block" />
   </div>
 </template>
 

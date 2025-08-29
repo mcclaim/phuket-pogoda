@@ -171,6 +171,13 @@ function dropDownActive() {
               На 10 дней
             </NuxtLink>
             <NuxtLink
+              to="/forecast/15days"
+              class="header__dropdown-item"
+              active-class="active"
+            >
+              На 15 дней
+            </NuxtLink>
+            <NuxtLink
               to="/forecast/weekend"
               class="header__dropdown-item"
               active-class="active"
