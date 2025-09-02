@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import { weatherIconUrl } from "~/shared/helpers/image.helper";
 
 const isOpen = ref(false);
 const dropdownOpen = ref(false);
@@ -11,11 +10,12 @@ const toggleDropdown = () => {
 
 function dropDownActive() {
   const paths = [
-    "/forecast/tomorrow",
-    "/forecast/week",
-    "/forecast/10days",
-    "/forecast/weekend",
-    "/forecast/month",
+    "/pogoda/na-zavtra",
+    "/pogoda/na-nedelyu",
+    "/pogoda/10-dney",
+    "/pogoda/15-dney",
+    "/pogoda/na-vyhodnye",
+    "/pogoda/na-mesyats",
   ];
   return paths.includes(useRoute().path);
 }
@@ -150,42 +150,42 @@ function dropDownActive() {
             :class="{ 'md:!hidden': !dropdownOpen }"
           >
             <NuxtLink
-              to="/forecast/tomorrow"
+              to="/pogoda/na-zavtra"
               class="header__dropdown-item"
               active-class="active"
             >
               Завтра
             </NuxtLink>
             <NuxtLink
-              to="/forecast/week"
+              to="/pogoda/na-nedelyu"
               class="header__dropdown-item"
               active-class="active"
             >
               На неделю
             </NuxtLink>
             <NuxtLink
-              to="/forecast/10days"
+              to="/pogoda/10-dney"
               class="header__dropdown-item"
               active-class="active"
             >
               На 10 дней
             </NuxtLink>
             <NuxtLink
-              to="/forecast/15days"
+              to="/pogoda/15-dney"
               class="header__dropdown-item"
               active-class="active"
             >
               На 15 дней
             </NuxtLink>
             <NuxtLink
-              to="/forecast/weekend"
+              to="/pogoda/na-vyhodnye"
               class="header__dropdown-item"
               active-class="active"
             >
               На выходные
             </NuxtLink>
             <NuxtLink
-              to="/forecast/month"
+              to="/pogoda/na-mesyats"
               class="header__dropdown-item"
               active-class="active"
             >
@@ -196,7 +196,7 @@ function dropDownActive() {
 
         <!-- Статьи -->
         <NuxtLink
-          to="/articles/pogoda-na-phukete"
+          to="/statya/pogoda-na-phukete"
           class="nav__link gap-2"
           active-class="active"
         >

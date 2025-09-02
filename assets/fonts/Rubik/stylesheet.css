@@ -2,7 +2,6 @@
 
 @font-face {
   font-family: "Rubik";
-  src: url("Rubik-Regular.eot");
   src: local("Rubik Regular"), local("Rubik-Regular"),
     url("Rubik-Regular.ttf") format("truetype");
   font-weight: normal;
@@ -11,7 +10,6 @@
 
 @font-face {
   font-family: "Rubik";
-  src: url("Rubik-Bold.eot");
   src: local("Rubik Bold"), local("Rubik-Bold"),
     url("Rubik-Bold.ttf") format("truetype");
   font-weight: bold;
@@ -20,16 +18,6 @@
 
 @font-face {
   font-family: "Rubik";
-  src: url("Rubik-ExtraLight.eot");
-  src: local("Rubik Thin"), local("Rubik-Thin"),
-    url("Rubik-Thin.ttf") format("truetype");
-  font-weight: 200;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Rubik";
-  src: url("Rubik-Light.eot");
   src: local("Rubik Light"), local("Rubik-Light"),
     url("Rubik-Light.ttf") format("truetype");
   font-weight: 300;
@@ -38,7 +26,6 @@
 
 @font-face {
   font-family: "Rubik";
-  src: url("Rubik-ExtraBold.eot");
   src: local("Rubik ExtraBold"), local("Rubik-ExtraBold"),
     url("Rubik-ExtraBold.ttf") format("truetype");
   font-weight: 800;
@@ -47,7 +34,6 @@
 
 @font-face {
   font-family: "Rubik";
-  src: url("Rubik-Medium.eot");
   src: local("Rubik Medium"), local("Rubik-Medium"),
     url("Rubik-Medium.ttf") format("truetype");
   font-weight: 500;

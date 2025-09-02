@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <AppHeader />
+    <LayoutAppHeader />
 
     <main class="flex-1 py-4 relative z-[1]">
       <div class="container xl:max-w-7xl mx-auto px-4">
@@ -8,13 +8,12 @@
       </div>
     </main>
 
-    <AppFooter />
+    <LayoutAppFooter />
   </div>
 </template>
 
 <script lang="ts" setup>
-import AppFooter from "./components/AppFooter.vue";
-import AppHeader from "./components/AppHeader.vue";
+import { LayoutAppHeader } from "#components";
 </script>
 
 <style lang="scss">

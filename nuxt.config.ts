@@ -28,8 +28,13 @@ export default defineNuxtConfig({
       siteUrl: process.env.SITE_URL || "https://phuket-pogoda.ru",
     },
   },
+  site: {
+    url: process.env.SITE_URL || "https://phuket-pogoda.ru", // ← укажи свой домен или временный URL
+    name: "Погода на Пхукете",
+  },
   sitemap: {
-    sitemaps: false,
+    strictNuxtContentPaths: true,
+    sitemaps: true,
     autoLastmod: true,
   },
   robots: {
