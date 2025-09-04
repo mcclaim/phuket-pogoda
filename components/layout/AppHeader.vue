@@ -8,6 +8,18 @@ const toggleDropdown = () => {
   dropdownOpen.value = !dropdownOpen.value;
 };
 
+const menu = reactive({ isOpen: false });
+
+const route = useRoute();
+
+watch(
+  route,
+  (value) => {
+    dropdownOpen.value = !dropDownActive() ? false : true;
+  },
+  { deep: true, immediate: true }
+);
+
 function dropDownActive() {
   const paths = [
     "/pogoda/na-zavtra",

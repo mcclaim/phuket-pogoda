@@ -1,43 +1,9 @@
 export const useWeather = () => {
-  const location = {
-    latitude: 7.8906,
-    longitude: 98.3981,
-    timezone: "auto",
-  };
+  const getCurrent = () =>
+    useAsyncData("weather-current", () => $fetch("/api/weather/current"));
 
-  const getCurrent = async () => {
-    const { data, error, pending } = await useFetch("/api/weather/current", {
-      query: { ...location },
-    });
-    if (error.value) {
-      throw createError({
-        statusCode: 500,
-        statusMessage: "Failed to load current weather",
-      });
-    }
-
-    return {
-      current: data.value?.current,
-      currentUnits: data.value?.current_units,
-      hourly: data.value?.hourly,
-      pending,
-    };
-  };
-
-  const getForecast = async () => {
-    const { data, error, pending } = await useFetch("/api/weather/forecast", {
-      query: { ...location },
-    });
-
-    if (error.value) {
-      throw createError({
-        statusCode: 500,
-        statusMessage: "Failed to load current weather",
-      });
-    }
-
-    return { daily: data.value?.daily, pending };
-  };
+  const getForecast = () =>
+    useAsyncData("weather-forecast", () => $fetch("/api/weather/forecast"));
 
   return { getCurrent, getForecast };
 };

@@ -1,11 +1,13 @@
 import { createHttp } from "../../utils/http";
 export default defineEventHandler(async () => {
+  const config = useRuntimeConfig();
+
   const http = createHttp("https://api.open-meteo.com/v1");
   const res = await http.get("/forecast", {
     params: {
-      latitude: 7.8906,
-      longitude: 98.3981,
-      timezone: "auto",
+      latitude: config.public.latitude,
+      longitude: config.public.longitude,
+      timezone: config.public.timezone,
       forecast_days: 16,
 
       // Текущая погода

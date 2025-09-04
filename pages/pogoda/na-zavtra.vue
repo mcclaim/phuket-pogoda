@@ -16,7 +16,7 @@ useHead({
 });
 
 const { getCurrent } = useWeather();
-const { hourly, pending } = await getCurrent();
+const { data: forecast, pending } = await getCurrent();
 
 // Swiper refs
 const swiperRef = ref<any>(null);
@@ -58,27 +58,27 @@ function goNext() {
       Погода в Пхукете на завтра
     </h1>
 
-    <Loader v-if="pending" />
+    <Loader v-if="pending && !forecast?.hourly" />
 
-    <div class="relative" v-if="!pending && hourly">
+    <div class="relative" v-if="!pending && forecast?.hourly">
       <!-- SSR-рендер (SEO): статичная сетка -->
       <div
         v-if="!mounted"
         class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-4"
       >
         <WeatherCard
-          v-for="(time, index) in getTomorrowWeather(hourly).time"
+          v-for="(time, index) in getTomorrowWeather(forecast.hourly).time"
           :key="index"
           is-hourly
           :weather-data="{
             time,
-            temperature_2m: hourly.temperature_2m[index],
-            apparent_temperature: hourly.apparent_temperature[index],
-            weathercode: hourly.weathercode[index],
-            is_day: hourly.is_day[index] as 0 | 1,
-            uv_index: hourly.uv_index[index],
-            wind_speed_10m: hourly.wind_speed_10m[index],
-            precipitation: hourly.precipitation[index],
+            temperature_2m: forecast.hourly.temperature_2m[index],
+            apparent_temperature: forecast.hourly.apparent_temperature[index],
+            weathercode: forecast.hourly.weathercode[index],
+            is_day: forecast.hourly.is_day[index] as 0 | 1,
+            uv_index: forecast.hourly.uv_index[index],
+            wind_speed_10m: forecast.hourly.wind_speed_10m[index],
+            precipitation: forecast.hourly.precipitation[index],
           }"
           card-class="!shadow-none"
         />
@@ -185,19 +185,19 @@ function goNext() {
           @reachEnd="showRightShadow = false"
         >
           <swiper-slide
-            v-for="(time, index) in getTomorrowWeather(hourly).time"
+            v-for="(time, index) in getTomorrowWeather(forecast.hourly).time"
             :key="index"
           >
             <WeatherCard
               :weather-data="{
                 time,
-                temperature_2m: hourly.temperature_2m[index],
-                apparent_temperature: hourly.apparent_temperature[index],
-                weathercode: hourly.weathercode[index],
-                is_day: hourly.is_day[index] as 0 | 1,
-                uv_index: hourly.uv_index[index],
-                wind_speed_10m: hourly.wind_speed_10m[index],
-                precipitation: hourly.precipitation[index],
+                temperature_2m: forecast.hourly.temperature_2m[index],
+                apparent_temperature: forecast.hourly.apparent_temperature[index],
+                weathercode: forecast.hourly.weathercode[index],
+                is_day: forecast.hourly.is_day[index] as 0 | 1,
+                uv_index: forecast.hourly.uv_index[index],
+                wind_speed_10m: forecast.hourly.wind_speed_10m[index],
+                precipitation: forecast.hourly.precipitation[index],
               }"
               is-hourly
               card-class="!shadow-none"
