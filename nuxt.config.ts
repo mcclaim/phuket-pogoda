@@ -10,8 +10,8 @@ export default defineNuxtConfig({
       meta: [],
       link: [],
     },
-    pageTransition: { name: "page", mode: "out-in" },
-    layoutTransition: { name: "layout", mode: "out-in" },
+    // pageTransition: { name: "page", mode: "out-in" },
+    // layoutTransition: { name: "layout", mode: "out-in" },
   },
   modules: [
     "@nuxtjs/tailwindcss",

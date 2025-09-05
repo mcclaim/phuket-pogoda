@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import WeatherCardDaily from "~/components/WeatherCardDaily.vue";
-import Loader from "~/components/Loader.vue";
-
 import { useHead } from "nuxt/app";
 import { getWeeklyWeather } from "~/shared/helpers/weatherCalcs.helper";
 

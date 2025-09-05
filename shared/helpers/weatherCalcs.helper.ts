@@ -186,10 +186,10 @@ export function getWeekendWeather(days: WeatherDailyArray) {
   const weekends = [];
   for (let i = startIndex; i < days.time.length; i++) {
     const date = new Date(days.time[i]);
-    if (date.getDay() === 6 || date.getDay() === 0) {
+    if (date.getDay() === 5 || date.getDay() === 6 || date.getDay() === 0) {
       weekends.push(i);
     }
-    if (weekends.length === 4) break; // Получаем только две ближайшие выходные
+    if (weekends.length === 6) break; // Получаем только две ближайшие выходные
   }
 
   return {

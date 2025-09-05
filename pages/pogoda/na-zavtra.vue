@@ -10,6 +10,10 @@ import "swiper/css/grid";
 import "swiper/css/scrollbar";
 import Loader from "~/components/Loader.vue";
 
+definePageMeta({
+  pageTransition: { name: "page-zoom", mode: "out-in" },
+});
+
 useHead({
   title:
     "Погода в Пхукете завтра, прогноз погоды Пхукет на завтра, Пхукет, Таиланд",

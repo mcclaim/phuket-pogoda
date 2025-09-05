@@ -207,11 +207,7 @@ function dropDownActive() {
         </div>
 
         <!-- Статьи -->
-        <NuxtLink
-          to="/statya/pogoda-na-phukete"
-          class="nav__link gap-2"
-          active-class="active"
-        >
+        <NuxtLink to="/statya" class="nav__link gap-2" active-class="active">
           <NuxtImg
             src="/images/icons/news.svg"
             alt="Articles"

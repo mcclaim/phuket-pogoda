@@ -1,11 +1,4 @@
-<script setup>
-definePageMeta({
-  pageTransition: {
-    name: "fade",
-    mode: "out-in", // <-- это важно
-  },
-});
-</script>
+<script setup></script>
 <template>
   <NuxtLayout>
     <NuxtPage />
