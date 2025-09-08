@@ -34,6 +34,7 @@ export default defineNuxtConfig({
       latitude: process.env.LATITUDE,
       longitude: process.env.LONGITUDE,
       timezone: process.env.TIMEZONE,
+      unsplashToken: process.env.UNSPLASH_ACCESS_KEY,
     },
   },
   site: {

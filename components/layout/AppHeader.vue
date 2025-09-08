@@ -31,6 +31,13 @@ function dropDownActive() {
   ];
   return paths.includes(useRoute().path);
 }
+
+function articleMenuActive() {
+  const paths = ["/statya"];
+  return paths.includes(
+    useRoute().path.split("/")[1] ? `/${useRoute().path.split("/")[1]}` : "/"
+  );
+}
 </script>
 
 <template>
@@ -207,7 +214,14 @@ function dropDownActive() {
         </div>
 
         <!-- Статьи -->
-        <NuxtLink to="/statya" class="nav__link gap-2" active-class="active">
+        <NuxtLink
+          to="/statya"
+          class="nav__link gap-2"
+          active-class="active"
+          :class="{
+            active: articleMenuActive(),
+          }"
+        >
           <NuxtImg
             src="/images/icons/news.svg"
             alt="Articles"
