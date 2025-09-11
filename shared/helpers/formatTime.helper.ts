@@ -22,6 +22,14 @@ export function formatDate(time: string) {
   });
 }
 
+export function formatOnlyDate(time: string) {
+  return new Date(time).toLocaleString("ru-RU", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  });
+}
+
 export function formatSecondsToHours(seconds: number) {
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
