@@ -21,6 +21,12 @@ async function fetchForecast() {
   return res.data;
 }
 
+async function fetchPhotos() {
+  const url = `${API_BASE}/api/photos`;
+  const res = await axios.get(url);
+  return res.data;
+}
+
 (async function run() {
   try {
     console.log("Start generating articles...");
@@ -43,6 +49,7 @@ async function fetchForecast() {
     }
 
     // Генерируем 7 статей (0..6)
+    const photos = await fetchPhotos();
     const days = Math.min(7, forecast.daily.time.length);
     for (let i = 0; i < days; i++) {
       const day = forecast.daily.time[i];
@@ -54,6 +61,7 @@ async function fetchForecast() {
       const uv = forecast.daily.uv_index_max?.[i] ?? 0;
       const sunrise = forecast.daily.sunrise[i];
       const sunset = forecast.daily.sunset[i];
+      const photo = photos?.[i % photos.length]?.urls.small || "";
 
       const slug = `${ARTICLE_PREFIX}${dateLabel}`; // например: auto-2025-08-11
       const filePath = path.join(dir, `${slug}.md`);
@@ -63,6 +71,7 @@ async function fetchForecast() {
 title: "Погода на Пхукете: советы туристам на ${dateLabel}"
 desc: "Прогноз на ${dateLabel}: температура ${tempMin}–${tempMax}°C, осадки ${rain} мм, ветер ${wind} км/ч. Советы туристам и рекомендации по экскурсиям."
 date: "${dateLabel}"
+img: "${photo}"
 slug: "${slug}"
 ---
 
