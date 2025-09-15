@@ -6,7 +6,7 @@
         title: blogData.title || 'Погода на пхукете на сегодня',
         desc: blogData.desc,
         date: blogData.date,
-        img: '',
+        img: blogData.img,
       }"
       :doc="blogData"
     />
@@ -14,19 +14,19 @@
   </div>
 </template>
 <script setup lang="ts">
+import { useStatyaHead } from "~/shared/helpers/articleHead.helper";
+
 const route = useRoute();
 const slug = route.params.slug as string;
 const { data: blogData } = await useAsyncData(`article-${slug}`, () =>
   queryContent(`/articles/${slug}`).findOne()
 );
 
-useHead({
-  title: blogData.value?.title || "Статья — phuket-pogoda.ru",
-  meta: [
-    {
-      name: "description",
-      content: blogData.value?.desc || "Полезные материалы о погоде на Пхукете",
-    },
-  ],
+useStatyaHead({
+  title: blogData.value?.title || "Погода на пхукете на сегодня",
+  desc: blogData.value?.desc || "",
+  date: blogData.value?.date || "",
+  slug,
+  img: blogData.value?.img || "",
 });
 </script>

@@ -17,21 +17,20 @@
       </h1>
     </header>
 
-    <div class="aspect-w-16 aspect-h-11 mb-6" v-if="blogData.img">
+    <div class="flex justify-center items-center mb-6" v-if="blogData.img">
       <NuxtImg
-        class="w-full object-cover rounded-xl"
+        densities="1x"
+        class="rounded-xl"
         :src="blogData.img"
-        densities="x1 x2"
         alt="Blog Image"
         lazy
       />
     </div>
 
-    <p class="font-medium text-lg text-gray-200 text-shadow-lg">
-      {{ blogData.desc }}
-    </p>
-
-    <ContentRenderer :value="doc" />
+    <ContentRenderer
+      class="article-data font-medium text-shadow-lg"
+      :value="doc"
+    />
   </article>
 </template>
 

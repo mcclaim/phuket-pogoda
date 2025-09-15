@@ -12,7 +12,7 @@
           :blog-data="{
             ...article,
             link: `/statya/${article._path.split('/').pop()}`,
-            img: photoData?.[index % photoData.length]?.urls.small || '',
+            img: article.img,
           }"
         />
       </div>
@@ -38,13 +38,7 @@ const { data: articleData } = await useAsyncData(`articles`, () =>
   queryContent("/articles").sort({ date: -1 }).limit(7).find()
 );
 
-const { data: photoData, pending, error } = await useFetch("/api/photos");
-
 if (articleData.value) {
   articles.value = articleData.value;
-}
-
-if (photoData.value) {
-  photos.value = photoData.value;
 }
 </script>

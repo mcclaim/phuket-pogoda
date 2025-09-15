@@ -6,7 +6,7 @@
     <nuxt-link :to="blogData.link">
       <div class="aspect-w-16 aspect-h-11 mb-4" v-if="blogData.img">
         <NuxtImg
-          class="w-full object-cover rounded-xl"
+          class="w-full object-cover rounded-xl max-h-[200px]"
           :src="blogData.img"
           densities="x1 x2"
           alt="Blog Image"
