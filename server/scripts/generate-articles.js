@@ -3,7 +3,10 @@ import fs from "fs";
 import path from "path";
 import axios from "axios";
 // <-- твой API
-import { formatOnlyDate } from "../../shared/helpers/formatTime.helper.ts";
+import {
+  formatOnlyDate,
+  formatTime,
+} from "../../shared/helpers/formatTime.helper.ts";
 
 const API_BASE = process.env.API_BASE_URL || "http://localhost:3000";
 const ARTICLE_PREFIX = process.env.ARTICLE_PREFIX || "pogoda-phukete-na-";
@@ -12,6 +15,9 @@ const PLACES = [
   { name: "Можно ли ехать в остров Пхи-Пхи?", slug: "phi-phi" },
   { name: "Можно ли ехать в остров Джеймса Бонда?", slug: "james-bond" },
   { name: "Можно ли ехать в Симиланские острова?", slug: "similan" },
+  { name: "Можно ли ехать в остров Самуи?", slug: "samui" },
+  { name: "Можно ли ехать в остров Панган?", slug: "pangan" },
+  { name: "Можно ли ехать в остров Ланга?", slug: "langa" },
   { name: "Можно ли погулять в Бангла роуд?", slug: "bangla-road" },
 ];
 
@@ -48,9 +54,9 @@ async function fetchPhotos() {
       }
     }
 
-    // Генерируем 7 статей (0..6)
+    // Генерируем 15 статей (0..14)
     const photos = await fetchPhotos();
-    const days = Math.min(7, forecast.daily.time.length);
+    const days = Math.min(15, forecast.daily.time.length);
     for (let i = 0; i < days; i++) {
       const day = forecast.daily.time[i];
       const dateLabel = formatOnlyDate(day);
@@ -59,23 +65,26 @@ async function fetchPhotos() {
       const rain = forecast.daily.precipitation_sum?.[i] ?? 0;
       const wind = forecast.daily.wind_speed_10m_max?.[i] ?? 0;
       const uv = forecast.daily.uv_index_max?.[i] ?? 0;
-      const sunrise = forecast.daily.sunrise[i];
-      const sunset = forecast.daily.sunset[i];
-      const photo = photos?.[i % photos.length]?.urls.small || "";
+      const sunrise = formatTime(forecast.daily.sunrise[i]);
+      const sunset = formatTime(forecast.daily.sunset[i]);
+      const photo =
+        `${
+          photos?.[i % photos.length]?.urls.raw
+        }&w=700&h=300&q=80&fit=crop&auto=format` || "";
 
       const slug = `${ARTICLE_PREFIX}${dateLabel}`; // например: auto-2025-08-11
       const filePath = path.join(dir, `${slug}.md`);
 
       // SEO-friendly frontmatter и содержимое
       const content = `---
-title: "Погода на Пхукете: советы туристам на ${dateLabel}"
+title: "Погода на Пхукете на ${dateLabel}: советы туристам и рекомендации по экскурсиям"
 desc: "Прогноз на ${dateLabel}: температура ${tempMin}–${tempMax}°C, осадки ${rain} мм, ветер ${wind} км/ч. Советы туристам и рекомендации по экскурсиям."
 date: "${dateLabel}"
 img: "${photo}"
 slug: "${slug}"
 ---
 
-## Прогноз погоды на ${dateLabel}
+>## Прогноз погоды на ${dateLabel}
 
 На Пхукете ожидается температура от **${tempMin}°C** до **${tempMax}°C**.  
 Уровень осадков — **${rain} мм**, ветер максимум **${wind} км/ч**, УФ-индекс: **${uv}**.
@@ -92,7 +101,9 @@ ${
     : "УФ-индекс умеренный — лёгкая защита достаточна."
 }
 
-## Можно ли ехать на экскурсии в Пхукете?
+##
+
+## Можно ли ехать на экскурсии в Пхукете:
 
 ### ${PLACES[0].name}
 ${
@@ -117,11 +128,33 @@ ${
 
 ### ${PLACES[3].name}
 ${
+  rain > 12 || wind > 35
+    ? "Лучше перенести поездку — штормовое предупреждение."
+    : "Погода позволяет — поездка на Самуи будет комфортной."
+}
+
+### ${PLACES[4].name}
+${
+  rain > 10
+    ? "Осадки могут испортить отдых — лучше выбрать другой день."
+    : "Можно ехать — условия благоприятные для отдыха на Пангане."
+}
+
+### ${PLACES[5].name}
+${
+  wind > 28
+    ? "Ветер может осложнить морскую прогулку — рекомендуется перенести."
+    : "Отличный день для поездки на остров Ланга."
+}
+
+### ${PLACES[6].name}
+${
   rain > 5
     ? "Вечером возможны кратковременные осадки — возьмите лёгкую куртку."
     : "Отличная погода для прогулки по Бангла Роуд."
 }
 
+##
 ---
 
 #### Лайфхаки и советы
@@ -129,9 +162,7 @@ ${
 - Для морских экскурсий смотрите информацию о ветре и волнении — при ветре свыше 25 км/ч тур может быть отменён.  
 - Для семей с детьми: высокая влажность и жара — предусмотрите питьё и солнцезащиту.
 
----
-
-> Статьи автоматически генерируются каждый день и покрывают прогноз на 7 дней. Планируйте отдых заранее и проверяйте обновления.
+<sub>_Статьи автоматически генерируются каждый день и покрывают прогноз на 7 дней. Планируйте отдых заранее и проверяйте обновления._</sub>
 
 `;
 

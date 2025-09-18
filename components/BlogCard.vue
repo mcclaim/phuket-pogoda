@@ -13,7 +13,7 @@
           lazy
         />
       </div>
-      <h2 class="text-lg font-semibold mb-2">
+      <h2 class="text-lg font-semibold mb-2 pt-0">
         {{ blogData.title }}
       </h2>
       <p class="text-md text-gray-200">

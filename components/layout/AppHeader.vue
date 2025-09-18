@@ -32,8 +32,8 @@ function dropDownActive() {
   return paths.includes(useRoute().path);
 }
 
-function articleMenuActive() {
-  const paths = ["/statya"];
+function articleMenuActive(path: string) {
+  const paths = [path];
   return paths.includes(
     useRoute().path.split("/")[1] ? `/${useRoute().path.split("/")[1]}` : "/"
   );
@@ -214,23 +214,67 @@ function articleMenuActive() {
         </div>
 
         <!-- Статьи -->
-        <NuxtLink
-          to="/statya"
-          class="nav__link gap-2"
-          active-class="active"
-          :class="{
-            active: articleMenuActive(),
-          }"
-        >
-          <NuxtImg
-            src="/images/icons/news.svg"
-            alt="Articles"
-            width="20"
-            height="20"
-            class="inline-block"
-          />
-          <span>Статьи</span>
-        </NuxtLink>
+        <div class="relative group">
+          <button
+            class="nav__link w-full xs:w-none"
+            :class="{
+              active: dropDownActive(),
+            }"
+            @click="toggleDropdown"
+          >
+            <NuxtImg
+              src="/images/icons/weather.svg"
+              alt="Articles"
+              width="20"
+              height="20"
+              class="inline-block mr-2"
+            />
+
+            <span>Статьи</span>
+            <svg
+              class="w-5 h-5 ml-auto transition-transform md:w-4 md:h-4 md:ml-1"
+              :class="{ 'rotate-180': dropdownOpen }"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          <!-- Дропдаун -->
+          <div
+            class="header__dropdown !block"
+            :class="{ 'md:!hidden': !dropdownOpen }"
+          >
+            <NuxtLink
+              to="/soveti"
+              class="header__dropdown-item gap-2"
+              active-class="active"
+              :class="{
+                active: articleMenuActive('soveti'),
+              }"
+            >
+              Советы на неделю
+            </NuxtLink>
+
+            <NuxtLink
+              to="/gid"
+              class="header__dropdown-item gap-2"
+              active-class="active"
+              :class="{
+                active: articleMenuActive('gid'),
+              }"
+            >
+              Гид по Пхукету
+            </NuxtLink>
+          </div>
+        </div>
       </nav>
     </div>
   </header>

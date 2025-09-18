@@ -20,7 +20,7 @@ export default defineEventHandler(async () => {
     const data = await $fetch("https://api.unsplash.com/photos/random", {
       query: {
         query: "phuket",
-        count: 10,
+        count: 15,
         client_id: process.env.UNSPLASH_ACCESS_KEY,
         w: 450,
         h: 250,

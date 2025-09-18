@@ -2,9 +2,7 @@
   <article>
     <header class="mb-6">
       <div class="justify-between mb-4 flex items-center gap-4">
-        <nuxt-link
-          to="/statya"
-          class="text-lime-300 hover:underline inline-block"
+        <nuxt-link :to="url" class="text-lime-300 hover:underline inline-block"
           >&larr; Все статьи</nuxt-link
         >
 
@@ -38,6 +36,7 @@
 const props = defineProps<{
   blogData: any;
   doc: any;
+  url: string;
 }>();
 
 const date = computed(

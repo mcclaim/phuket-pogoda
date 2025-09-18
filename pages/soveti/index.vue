@@ -3,7 +3,7 @@
     <h1
       class="text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg mb-6"
     >
-      Во что одеться на Пхукете на эту неделю?
+      Во что одеться на Пхукете на ближайшее время?
     </h1>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -11,7 +11,7 @@
         <BlogCard
           :blog-data="{
             ...article,
-            link: `/statya/${article._path.split('/').pop()}`,
+            link: `/soveti/${article._path.split('/').pop()}`,
             img: article.img,
           }"
         />
@@ -23,7 +23,6 @@
 import { useHead } from "nuxt/app";
 
 const articles = ref();
-const photos = ref();
 useHead({
   title: "Погода на Пхукете — phuket-pogoda.ru",
   meta: [
@@ -34,8 +33,8 @@ useHead({
   ],
 });
 
-const { data: articleData } = await useAsyncData(`articles`, () =>
-  queryContent("/articles").sort({ date: -1 }).limit(7).find()
+const { data: articleData } = await useAsyncData(`soveti`, () =>
+  queryContent("/soveti").sort({ date: 1 }).limit(15).find()
 );
 
 if (articleData.value) {
