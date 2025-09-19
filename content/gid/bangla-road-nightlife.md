@@ -2,7 +2,7 @@
 title: "Ночная жизнь на Бангла Роуд в Пхукете"
 desc: "Что ждёт туристов на главной улице развлечений Пхукета — бары, клубы, шоу и атмосфера праздника."
 date: "2025-09-19"
-img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=700&h=300&q=80&fit=crop&auto=format"
+img: "https://phuket-tropic-tours.com/public/images/8645c790116e580dd2df0.jpg"
 slug: "bangla-road-nightlife"
 ---
 

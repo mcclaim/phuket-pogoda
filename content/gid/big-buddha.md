@@ -2,7 +2,7 @@
 title: "Большой Будда на Пхукете"
 desc: "Главная святыня острова — статуя Большого Будды высотой 45 метров. Что нужно знать туристам."
 date: "2025-09-19"
-img: "https://images.unsplash.com/photo-1587502536263-3f1e56b9da9c?w=700&h=300&q=80&fit=crop&auto=format"
+img: "https://images.ctfassets.net/dsbipkqphva2/5hBcQIaaJVFmrZk2cIrVfS/97458bb8291076d4c0cfb95f18c44cca/big-buddha-phuket-pelago-min.jpg"
 slug: "big-buddha"
 ---
 

@@ -1,43 +1,33 @@
 <script lang="ts" setup>
 import { ref } from "vue";
+import { articleMenuActive } from "~/shared/helpers/menuActive.helper";
 
 const isOpen = ref(false);
 const dropdownOpen = ref(false);
+const articleDropdownOpen = ref(false);
+
+const articleToggleDropdown = () => {
+  articleDropdownOpen.value = !articleDropdownOpen.value;
+};
 
 const toggleDropdown = () => {
   dropdownOpen.value = !dropdownOpen.value;
 };
-
-const menu = reactive({ isOpen: false });
 
 const route = useRoute();
 
 watch(
   route,
   (value) => {
-    dropdownOpen.value = !dropDownActive() ? false : true;
+    articleDropdownOpen.value =
+      articleDropdownOpen.value && articleMenuActive(["/soveti", "/gid"])
+        ? true
+        : false;
+    dropdownOpen.value =
+      dropdownOpen.value && articleMenuActive(["/pogoda"]) ? true : false;
   },
   { deep: true, immediate: true }
 );
-
-function dropDownActive() {
-  const paths = [
-    "/pogoda/na-zavtra",
-    "/pogoda/na-nedelyu",
-    "/pogoda/10-dney",
-    "/pogoda/15-dney",
-    "/pogoda/na-vyhodnye",
-    "/pogoda/na-mesyats",
-  ];
-  return paths.includes(useRoute().path);
-}
-
-function articleMenuActive(path: string) {
-  const paths = [path];
-  return paths.includes(
-    useRoute().path.split("/")[1] ? `/${useRoute().path.split("/")[1]}` : "/"
-  );
-}
 </script>
 
 <template>
@@ -134,7 +124,7 @@ function articleMenuActive(path: string) {
           <button
             class="nav__link w-full xs:w-none"
             :class="{
-              active: dropDownActive(),
+              active: articleMenuActive(['/pogoda']),
             }"
             @click="toggleDropdown"
           >
@@ -218,9 +208,9 @@ function articleMenuActive(path: string) {
           <button
             class="nav__link w-full xs:w-none"
             :class="{
-              active: dropDownActive(),
+              active: articleMenuActive(['/soveti', '/gid']),
             }"
-            @click="toggleDropdown"
+            @click="articleToggleDropdown"
           >
             <NuxtImg
               src="/images/icons/weather.svg"
@@ -233,7 +223,7 @@ function articleMenuActive(path: string) {
             <span>Статьи</span>
             <svg
               class="w-5 h-5 ml-auto transition-transform md:w-4 md:h-4 md:ml-1"
-              :class="{ 'rotate-180': dropdownOpen }"
+              :class="{ 'rotate-180': articleDropdownOpen }"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
@@ -250,14 +240,14 @@ function articleMenuActive(path: string) {
           <!-- Дропдаун -->
           <div
             class="header__dropdown !block"
-            :class="{ 'md:!hidden': !dropdownOpen }"
+            :class="{ 'md:!hidden': !articleDropdownOpen }"
           >
             <NuxtLink
               to="/soveti"
               class="header__dropdown-item gap-2"
               active-class="active"
               :class="{
-                active: articleMenuActive('soveti'),
+                active: articleMenuActive(['/soveti']),
               }"
             >
               Советы на неделю
@@ -268,7 +258,7 @@ function articleMenuActive(path: string) {
               class="header__dropdown-item gap-2"
               active-class="active"
               :class="{
-                active: articleMenuActive('gid'),
+                active: articleMenuActive(['/gid']),
               }"
             >
               Гид по Пхукету
