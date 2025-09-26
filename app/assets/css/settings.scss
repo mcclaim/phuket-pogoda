@@ -1,0 +1,30 @@
+@import "../fonts/Rubik/stylesheet.css";
+// @import url("./tailwind.scss");
+@import url("./global.scss");
+@import url("./transitions.scss");
+
+:root {
+  --font-size: 16px;
+  --primary-color: #fff;
+  --secondary-color: #a3e635;
+  --card-bg: #1d2837;
+}
+
+/* Plugins settings */
+.swiper-grid-column > .swiper-wrapper {
+  display: grid;
+  grid-template-rows: 0.5fr 0.5fr;
+  grid-auto-flow: column;
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --font-size: 13px;
+  }
+}
