@@ -10,7 +10,12 @@ export default defineNuxtConfig({
     },
   ],
 
-  css: ["~/assets/css/settings.scss", "swiper/css", "swiper/css/scrollbar"],
+  css: [
+    "~/assets/css/settings.scss",
+    "swiper/css",
+    "swiper/css/scrollbar",
+    "swiper/css/grid",
+  ],
 
   modules: [
     "@nuxt/content",
@@ -28,6 +33,7 @@ export default defineNuxtConfig({
     },
     // Public keys that are exposed to the client-side
     public: {
+      siteUrl: process.env.SITE_URL,
       cityName: process.env.CITY_NAME,
       citySlug: process.env.CITY_SLUG,
       cityCountry: process.env.CITY_COUNTRY,

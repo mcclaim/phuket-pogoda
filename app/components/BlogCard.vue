@@ -4,7 +4,7 @@
     :class="blogData.cardClass"
   >
     <nuxt-link :to="blogData.link">
-      <div class="aspect-w-16 aspect-h-11 mb-4" v-if="blogData.img">
+      <div class="aspect-w-16 aspect-h-11 mb-4" v-if="blogData?.img">
         <NuxtImg
           class="w-full object-cover rounded-xl max-h-[200px]"
           :src="blogData.img"
@@ -25,13 +25,7 @@
 
 <script lang="ts" setup>
 defineProps<{
-  blogData: {
-    cardClass?: string | object | Array<string | object>;
-    title: string;
-    desc: string;
-    link: string;
-    img?: string;
-  };
+  blogData: BlogCardData;
 }>();
 </script>
 
