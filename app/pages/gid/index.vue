@@ -22,19 +22,9 @@
 </template>
 <script setup lang="ts">
 import type { ContentCollectionItem } from "@nuxt/content";
-import { useHead } from "nuxt/app";
 
 const route = useRoute();
 const articles = ref<BlogListData[]>([]);
-useHead({
-  title: "Погода на Пхукете — phuket-pogoda.ru",
-  meta: [
-    {
-      name: "description",
-      content: "Текущая погода на Пхукете и прогноз на 5 дней.",
-    },
-  ],
-});
 
 const { data: articleData } = await useAsyncData(route.path, () => {
   return queryCollection("content")
@@ -47,8 +37,16 @@ if (articleData.value) {
     title: article?.title || "Интересное место на Пхукете",
     desc: article?.meta?.desc || "Описание внутри статьи",
     path: article.path || "/",
-    id: article.id || "/",
+    id: article.id || Math.random().toString(36),
     img: typeof article?.meta?.img === "string" ? article.meta.img : null,
   }));
 }
+
+useSeoHead({
+  title: "Гид по Пхукету – гид по отдыху, пляжам и экскурсиям",
+  desc: "Полезные советы для туристов в Пхукете: лучшие пляжи, цены, экскурсии, транспорт и лайфхаки для идеального отдыха в Таиланде.",
+  date: formatOnlyDate(new Date().toDateString()),
+  img: "/images/articles/james-bond.jpg",
+  urlPath: "/gid",
+});
 </script>

@@ -4,13 +4,14 @@
       v-if="blogData"
       :blog-data="{
         title: blogData.title || '',
-        desc: blogData.desc,
-        date: blogData.date,
-        img: blogData.img,
+        desc: blogData.meta.desc,
+        date: blogData.meta.date,
+        img: blogData.meta.img,
       }"
       url="/soveti"
       :doc="blogData"
     />
+
     <div v-else class="text-center text-2xl">Статья не найдена.</div>
   </div>
 </template>
@@ -27,11 +28,11 @@ const { data: blogData } = await useAsyncData(route.path, () => {
 });
 
 useSeoHead({
-  title: blogData.value?.title || "",
-  desc: blogData.value?.desc || "",
-  date: blogData.value?.date || "",
-  slug,
-  img: blogData.value?.img || "",
+  title:
+    blogData.value?.title || "Советы по Пхукету, все что нужно знать туристу",
+  desc: blogData.value?.meta.desc || "",
+  date: blogData.value?.meta.date || "",
+  img: blogData.value?.meta.img || "",
   urlPath: `/soveti/${slug}`,
 });
 </script>

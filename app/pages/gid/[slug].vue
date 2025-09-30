@@ -29,11 +29,10 @@ const { data: blogData } = await useAsyncData(route.path, () => {
 });
 
 useSeoHead({
-  title: blogData.value?.meta?.title || "Пхукет, все что нужно знать туристу",
-  desc: blogData.value?.meta?.desc || "",
-  date: blogData.value?.meta?.date || "",
-  slug,
-  img: blogData.value?.meta?.img || "",
+  title: blogData.value?.title || "Гид по Пхукету, все что нужно знать туристу",
+  desc: blogData.value?.meta.desc || "",
+  date: blogData.value?.meta.date || "",
+  img: blogData.value?.meta.img || "",
   urlPath: `/gid/${slug}`,
 });
 </script>
