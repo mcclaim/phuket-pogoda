@@ -32,6 +32,13 @@ export default defineNuxtConfig({
       unsplashSecretKey: process.env.UNSPLASH_ACCESS_KEY,
     },
     // Public keys that are exposed to the client-side
+    redis: {
+      host: process.env.REDIS_HOST || "127.0.0.1",
+      port: process.env.REDIS_PORT || "6379",
+      username: process.env.REDIS_USER || "",
+      password: process.env.REDIS_PASS || "",
+      db: process.env.REDIS_DB || "0",
+    },
     public: {
       siteUrl: process.env.SITE_URL,
       cityName: process.env.CITY_NAME,
