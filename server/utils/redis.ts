@@ -1,12 +1,21 @@
-import Redis from "ioredis";
+import { createClient } from "redis";
 
 const config = useRuntimeConfig();
 
-export const redis = new Redis({
-  host: config.redis.host,
-  port: config.redis.port,
-  username: config.redis.username, // если нужен
-  password: config.redis.password, // если нужен
-  db: config.redis.db || 0,
-  lazyConnect: true,
-});
+let client: ReturnType<typeof createClient> | null = null;
+
+export async function getRedis() {
+  if (!client) {
+    client = createClient({
+      url: config.public.redisUrl as string,
+    });
+
+    client.on("error", (err) => {
+      console.error("Redis Client Error", err);
+    });
+
+    await client.connect();
+  }
+
+  return client;
+}
