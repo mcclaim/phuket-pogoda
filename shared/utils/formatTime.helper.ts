@@ -1,33 +1,30 @@
+import dayjs from "dayjs";
+import "dayjs/locale/ru";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.locale("ru");
+
+export function currentPhuketTime(time: Date | string) {
+  return dayjs.tz(time, "Asia/Bangkok").format("HH:mm");
+}
+
 export function formatTime(time: string) {
-  return new Date(time).toLocaleString("ru-RU", {
-    hour: "2-digit",
-    minute: "2-digit",
-    day: "numeric",
-    month: "long",
-  });
+  return dayjs(time).format("DD MMMM HH:mm");
 }
 
 export function formatOnlyTime(time: string) {
-  return new Date(time).toLocaleString("ru-RU", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  return dayjs(time).format("HH:mm");
 }
 
 export function formatDate(time: string) {
-  return new Date(time).toLocaleString("ru-RU", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-  });
+  return dayjs(time).format("dddd, DD MMMM");
 }
 
 export function formatOnlyDate(time: string) {
-  return new Date(time).toLocaleString("ru-RU", {
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
-  });
+  return dayjs(time).format("DD.MM.YYYY");
 }
 
 export function formatSecondsToHours(seconds: number) {

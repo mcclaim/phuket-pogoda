@@ -1,3 +1,8 @@
+html {
+  overflow-y: scroll; /* фолбэк для старых браузеров */
+  scrollbar-gutter: stable; /* современное решение */
+}
+
 body {
   color: var(--primary-color);
   font-size: var(--font-size);

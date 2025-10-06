@@ -60,7 +60,7 @@ function goNext() {
 
     <Loader v-if="pending && !forecast?.hourly" />
 
-    <div class="relative" v-if="!pending && forecast?.hourly">
+    <div class="relative" v-else>
       <!-- SSR-рендер (SEO): статичная сетка -->
       <div
         v-if="!mounted"

@@ -3,9 +3,12 @@ import { getRedis } from "./redis";
 export async function getOrSetCache<T>(
   key: string,
   ttlSeconds: number,
+  type: "current" | "forecast",
   fetchFn: () => Promise<T>
 ): Promise<T> {
-  const redis = await getRedis();
+  const redis = await getRedis(
+    type === "forecast" ? "redisUrlForecast" : "redisUrl"
+  );
 
   // 1. Проверяем кэш
   const cached = await redis.get(key);

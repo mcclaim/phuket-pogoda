@@ -4,10 +4,10 @@ const config = useRuntimeConfig();
 
 let client: ReturnType<typeof createClient> | null = null;
 
-export async function getRedis() {
+export async function getRedis(url: string) {
   if (!client) {
     client = createClient({
-      url: config.public.redisUrl as string,
+      url: config.public[url] as string,
     });
 
     client.on("error", (err) => {

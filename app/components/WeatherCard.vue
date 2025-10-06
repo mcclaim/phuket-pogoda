@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { formatTime } from "#shared/utils/formatTime.helper";
-import { iconUrl, uvImage, weatherIconUrl } from "#shared/utils/image.helper";
+import { uvImage, weatherIconUrl } from "#shared/utils/image.helper";
 import { canSwimUvIndex } from "#shared/utils/canSwim.helper";
 import { getWeatherIconWithDay } from "#shared/utils/weatherCode.helper";
 import type { WeatherHourlyItem } from "#shared/types/WeatherDataHourly.type";
 
-const props = defineProps<{
+defineProps<{
   weatherData: WeatherHourlyItem;
   cardClass?: string | object | Array<string | object>;
 }>();

@@ -37,7 +37,7 @@ function goNext() {
 
 <template>
   <div class="glass p-6">
-    <h2 class="text-2xl font-semibold mb-5">Погода за 24 часа</h2>
+    <h2 class="text-2xl font-semibold mb-5 pt-0">Погода за 24 часа</h2>
 
     <div class="relative">
       <!-- Left shadow -->
@@ -113,13 +113,13 @@ function goNext() {
           <WeatherCard
             :weather-data="{
               time,
-              temperature_2m: hours.temperature_2m[index],
-              apparent_temperature: hours.apparent_temperature[index],
-              weathercode: hours.weathercode[index],
+              temperature_2m: hours.temperature_2m[index] || 30,
+              apparent_temperature: hours.apparent_temperature[index] || 30,
+              weathercode: hours.weathercode[index] || 0,
               is_day: hours.is_day[index] as 0 | 1,
-              uv_index: hours.uv_index[index],
-              wind_speed_10m: hours.wind_speed_10m[index],
-              precipitation: hours.precipitation[index],
+              uv_index: hours.uv_index[index] || 0,
+              wind_speed_10m: hours.wind_speed_10m[index] || 0,
+              precipitation: hours.precipitation[index] || 0,
             }"
             card-class="!shadow-none"
           />

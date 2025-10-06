@@ -1,6 +1,6 @@
 <template>
   <div class="glass p-6">
-    <h2 class="text-2xl sm:text-3xl font-semibold">Текущая погода</h2>
+    <h2 class="text-2xl sm:text-3xl font-semibold pt-0">Текущая погода</h2>
     <div class="grid grid-cols-12 gap-4">
       <div
         class="flex items-center col-span-12 pt-2 pb-1 pl-[3.8rem] sm:pt-6 sm:pl-[5.5rem] relative"
@@ -80,12 +80,7 @@
           Время:
           <span class="text-lime-300 font-bold">
             {{ weather.is_day ? "День" : "Ночь" }} —
-            {{
-              new Date(weather.time).toLocaleTimeString("ru-RU", {
-                hour: "2-digit",
-                minute: "2-digit",
-              })
-            }}
+            {{ currentTime }}
           </span>
         </p>
       </div>
@@ -106,6 +101,10 @@ const cloudCover = computed(() => {
     : props.weather.cloud_cover > 20
       ? "Переменная облачность"
       : "Ясно";
+});
+
+const currentTime = computed(() => {
+  return props.weather.time ? currentPhuketTime(new Date()) : 0;
 });
 
 const iconUrl = computed(() => {

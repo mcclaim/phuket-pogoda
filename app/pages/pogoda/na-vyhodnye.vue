@@ -20,7 +20,7 @@ const { data: forecast, pending } = await useForecastWeather();
 
     <Loader v-if="pending && !forecast.daily" />
 
-    <div v-else-if="forecast?.daily">
+    <div v-else>
       <h2
         class="text-1xl md:text-2xl lg:text-3xl font-medium text-shadow-lg mb-4"
       >

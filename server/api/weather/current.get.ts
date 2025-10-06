@@ -7,7 +7,7 @@ export default defineEventHandler(async () => {
 
   const cacheKey = `weather:${config.public.latitude}:${config.public.longitude}:current`;
 
-  return await getOrSetCache(cacheKey, 1800, async () => {
+  return await getOrSetCache(cacheKey, 1000, "current", async () => {
     const res = await http.get("/forecast", {
       params: {
         latitude: config.public.latitude,
