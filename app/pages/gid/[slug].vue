@@ -15,8 +15,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { BlogData } from "#shared/types/BlogData.type";
-
 const route = useRoute();
 const slug = route.params.slug as string;
 

@@ -9,7 +9,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "ru",
       },
-      title: "title",
+      title: "Погода в Пхукете - Phuket Weather",
       charset: "utf-8",
       meta: [
         { name: "theme-color", content: "#b0f146" },
