@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { useHead } from "nuxt/app";
 import { getWeeklyWeather } from "#shared/utils/weatherCalcs.helper";
 
-useHead({
+const { data: forecast, pending } = await useForecastWeather();
+
+useSeoHead({
   title:
     "Погода в Пхукете на неделю, прогноз погоды Пхукет на 7 дней, прогноз погоды Пхукет на семь дней, Пхукет, Таиланд",
+  desc: "Погода в Пхукете на неделю, подробный прогноз погоды на 7 дней для населенного пункта Пхукет, Пхукет, Таиланд.",
+  keywords:
+    "погода в Пхукете на неделю, погода в Пхукете на 7 дней, погода Пхукет неделя, погода Пхукет 7 дней, прогноз погоды в Пхукете на неделю, прогноз погоды в Пхукете на 7 дней, прогноз погоды неделя, прогноз погоды Пхукет 7 дней",
+  date: "на неделю",
+  urlPath: "/na-nedelyu",
 });
-
-const { data: forecast, pending } = await useForecastWeather();
 </script>
 
 <template>

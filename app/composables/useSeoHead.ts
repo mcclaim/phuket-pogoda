@@ -1,13 +1,20 @@
 export function useSeoHead(statya: {
   title: string;
   desc: string;
+  keywords?: string;
   date: string;
-  img: string;
+  img?: string;
   urlPath: string;
 }) {
   const config = useRuntimeConfig();
   const url = config.public.siteUrl + statya.urlPath;
-  const img = statya.img.startsWith("http") ? statya.img : url + statya.img;
+  const img = () => {
+    if (!statya?.img) {
+      return "/images/meta/og-main.png";
+    }
+
+    return statya.img.startsWith("http") ? statya.img : url + statya.img;
+  };
 
   useHead({
     title: statya.title,
@@ -16,7 +23,9 @@ export function useSeoHead(statya: {
       { name: "description", content: statya.desc },
       {
         name: "keywords",
-        content: `Пхукет, погода Пхукет ${statya.date}, прогноз погоды ${statya.date}, отдых в Таиланде, экскурсии Пхукет, советы туристам Пхукет, пляжи Пхукет, отели Пхукет, туры Пхукет`,
+        content:
+          statya.keywords ||
+          `Пхукет, погода Пхукет ${statya.date}, прогноз погоды ${statya.date}, отдых в Таиланде, экскурсии Пхукет, советы туристам Пхукет, пляжи Пхукет, отели Пхукет, туры Пхукет`,
       },
 
       // Open Graph (для Facebook, Telegram, WhatsApp и т.д.)
@@ -25,7 +34,7 @@ export function useSeoHead(statya: {
       { property: "og:description", content: statya.desc },
       { property: "og:url", content: url },
       { property: "og:image", content: img },
-      { property: "og:site_name", content: "Погода на Пхукете" },
+      { property: "og:site_name", content: "Погода в Пхукете" },
 
       // Twitter Cards
       { name: "twitter:card", content: "summary_large_image" },

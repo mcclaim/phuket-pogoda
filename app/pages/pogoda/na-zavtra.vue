@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useHead } from "nuxt/app";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { FreeMode, Grid } from "swiper/modules";
 import { getTomorrowWeather } from "#shared/utils/weatherCalcs.helper";
@@ -9,11 +8,6 @@ import Loader from "~/components/Loader.vue";
 
 definePageMeta({
   pageTransition: { name: "page-zoom", mode: "out-in" },
-});
-
-useHead({
-  title:
-    "Погода в Пхукете завтра, прогноз погоды Пхукет на завтра, Пхукет, Таиланд",
 });
 
 const { data: forecast, pending } = await useCurrentWeather();
@@ -48,6 +42,14 @@ function goPrev() {
 function goNext() {
   swiperRef.value?.slideNext();
 }
+
+useSeoHead({
+  title:
+    "Погода в Пхукете завтра, прогноз погоды Пхукет на завтра, Пхукет, Таиланд",
+  desc: "Погода в Пхукете на завтра, подробный прогноз погоды на завтра для островов Пхукета, Пхукет, Таиланд.",
+  date: "на завтра",
+  urlPath: "/na-zavtra",
+});
 </script>
 
 <template>

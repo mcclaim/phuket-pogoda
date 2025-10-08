@@ -12,16 +12,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useHead } from "nuxt/app";
-
-useHead({
-  title: "Погода на Пхукете — phuket-pogoda.ru",
-  meta: [
-    {
-      name: "description",
-      content: "Текущая погода на Пхукете и прогноз на 5 дней.",
-    },
-  ],
+useSeoHead({
+  title:
+    "Погода в Пхукете сегодня, прогноз погоды Пхукет на сегодня, Пхукет, Таиланд",
+  desc: "Погода в Пхукете на сегодня, подробный прогноз погоды на сегодня для островов Пхукета, Пхукет, Таиланд.",
+  date: formatOnlyDate(new Date().toDateString()),
+  urlPath: "/",
 });
 
 const { data: forecast, pending } = await useCurrentWeather();

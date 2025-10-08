@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { useHead } from "nuxt/app";
 import { getWeekendWeather } from "#shared/utils/weatherCalcs.helper";
 
-useHead({
+const { data: forecast, pending } = await useForecastWeather();
+
+useSeoHead({
   title:
     "Погода в Пхукете выходные, прогноз погоды Пхукет на субботу и воскресенье, Пхукет, Таиланд",
+  desc: "Погода в Пхукете на выходные, подробный прогноз погоды на выходные для островов Пхукета, Пхукет, Таиланд.",
+  date: "на выходные",
+  urlPath: "/na-vyhodnye",
 });
-
-const { data: forecast, pending } = await useForecastWeather();
 </script>
 
 <template>

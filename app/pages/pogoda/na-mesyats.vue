@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import Loader from "~/components/Loader.vue";
-
-import { useHead } from "nuxt/app";
 import { getThirtyDayWeather } from "#shared/utils/weatherCalcs.helper";
 
-useHead({
+const { data: forecast, pending } = await useForecastWeather();
+
+useSeoHead({
   title:
     "Погода в Пхукете на месяц, прогноз погоды Пхукет на 30 дней, прогноз погоды Пхукет на тридцать дней, Пхукет, Таиланд",
+  desc: "Погода в Пхукете на месяц, обзорный прогноз погоды на 30 дней для островов Пхукета, Пхукет, Таиланд.",
+  keywords:
+    "погода в Пхукете на месяц, погода в Пхукете на 30 дней, погода Пхукет месяц, погода Пхукет 30 дней, прогноз погоды в Пхукете на месяц,прогноз погоды в Пхукете на 30 дней, прогноз погоды Пхукет месяц, прогноз погоды Пхукет 30 дней",
+  date: "на месяц",
+  urlPath: "/na-mesyats",
 });
-
-const { data: forecast, pending } = await useForecastWeather();
 </script>
 
 <template>
