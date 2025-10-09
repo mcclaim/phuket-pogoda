@@ -73,7 +73,16 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxt/scripts",
     "@nuxtjs/tailwindcss",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
   ],
+
+  routeRules: {
+    "/": { prerender: true },
+    "/pogoda": { prerender: true },
+    "/gid": { prerender: true },
+    "/soveti/**": { isr: 300 },
+  },
 
   runtimeConfig: {
     // Private keys that are only available on the server
