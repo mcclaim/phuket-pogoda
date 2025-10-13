@@ -21,6 +21,7 @@
         class="rounded-xl"
         :src="blogData.img"
         alt="Blog Image"
+        format="webp"
         lazy
       />
     </div>

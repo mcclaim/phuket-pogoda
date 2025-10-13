@@ -10,6 +10,7 @@
           :src="blogData.img"
           densities="x1 x2"
           alt="Blog Image"
+          format="webp"
           lazy
         />
       </div>
