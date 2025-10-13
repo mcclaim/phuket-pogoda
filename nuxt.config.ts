@@ -4,6 +4,13 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-09-26",
   devtools: { enabled: true },
 
+  site: {
+    name: "Погода в Пхукете",
+    url: process.env.SITE_URL || "https://phuket-pogoda.ru",
+    description:
+      "Актуальная погода в Пхукете на сегодня, прогноз на 7 дней, прогноз на выходные, прогноз на 10 дней и прогноз на месяц. Температура воды и воздуха, осадки, ветер, влажность. Полезные советы для туристов.",
+  },
+
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: {
@@ -82,6 +89,10 @@ export default defineNuxtConfig({
     "/pogoda": { prerender: true },
     "/gid": { prerender: true },
     "/soveti/**": { isr: 300 },
+  },
+
+  sitemap: {
+    sources: ["/api/__sitemap__/urls"],
   },
 
   runtimeConfig: {

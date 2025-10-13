@@ -33,12 +33,12 @@ export default {
             </div>
           </div>
           <div>
-            <img src="https://i.ibb.co/G9DC8S0/404-2.png" />
+            <NuxtImg src="https://i.ibb.co/G9DC8S0/404-2.png" densities="1x" />
           </div>
         </div>
       </div>
       <div>
-        <img src="https://i.ibb.co/ck1SGFJ/Group.png" />
+        <NuxtImg src="https://i.ibb.co/ck1SGFJ/Group.png" densities="1x" />
       </div>
     </div>
   </NuxtLayout>

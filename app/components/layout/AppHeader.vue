@@ -51,10 +51,12 @@ watch(
         exact-active-class="active"
         class="px-4 py-3 relative z-[1]"
       >
-        <img
+        <NuxtImg
           src="/images/logo.svg"
           alt="Logo"
           class="w-full sm:max-w-full max-w-[93%]"
+          title="Погода в Пхукете"
+          densities="1x"
         />
       </NuxtLink>
 

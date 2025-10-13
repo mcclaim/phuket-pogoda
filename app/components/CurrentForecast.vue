@@ -5,7 +5,7 @@
       <div
         class="flex items-center col-span-12 pt-2 pb-1 pl-[3.8rem] sm:pt-6 sm:pl-[5.5rem] relative"
       >
-        <img
+        <NuxtImg
           :src="iconUrl"
           alt="icon"
           class="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] top-[0] sm:top-[-0.2rem] left-[-1rem] absolute"
