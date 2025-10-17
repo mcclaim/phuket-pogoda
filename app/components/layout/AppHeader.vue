@@ -53,10 +53,12 @@ watch(
       >
         <NuxtImg
           src="/images/logo.svg"
-          alt="Logo"
+          alt="Погода в Пхукете"
           class="w-full sm:max-w-full max-w-[93%]"
           title="Погода в Пхукете"
           densities="1x"
+          width="269"
+          height="29"
         />
       </NuxtLink>
 

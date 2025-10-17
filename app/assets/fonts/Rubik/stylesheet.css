@@ -5,7 +5,9 @@
   src:
     local("Rubik Regular"),
     local("Rubik-Regular"),
+    url("Rubik-Regular.woff2") format("woff2"),
     url("Rubik-Regular.ttf") format("truetype");
+
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -16,6 +18,7 @@
   src:
     local("Rubik Bold"),
     local("Rubik-Bold"),
+    url("Rubik-Bold.woff2") format("woff2"),
     url("Rubik-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
@@ -27,6 +30,7 @@
   src:
     local("Rubik Light"),
     local("Rubik-Light"),
+    url("Rubik-Light.woff2") format("woff2"),
     url("Rubik-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
@@ -38,6 +42,7 @@
   src:
     local("Rubik ExtraBold"),
     local("Rubik-ExtraBold"),
+    url("Rubik-ExtraBold.woff2") format("woff2"),
     url("Rubik-ExtraBold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
@@ -49,6 +54,7 @@
   src:
     local("Rubik Medium"),
     local("Rubik-Medium"),
+    url("Rubik-Medium.woff2") format("woff2"),
     url("Rubik-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;

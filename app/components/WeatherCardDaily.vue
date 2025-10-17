@@ -40,7 +40,9 @@ const props = defineProps<{
         height="60"
         width="60"
         densities="x1 x2"
-        alt="Погода"
+        :alt="`${weatherData.temperature_2m_max}°C к ${formatTime(
+          weatherData.time
+        )}`"
         class="w-[60px] h-[60px] -order-1 mt-[-15px] sm:order-none sm:mt-0"
       />
     </div>

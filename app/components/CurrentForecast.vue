@@ -9,6 +9,10 @@
           :src="iconUrl"
           alt="icon"
           class="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] top-[0] sm:top-[-0.2rem] left-[-1rem] absolute"
+          width="100"
+          height="100"
+          format="svg"
+          style="aspect-ratio: 1 / 1"
         />
         <p class="text-xl md:text-3xl lg:text-5xl font-extrabold">
           <span class="text-5xl sm:text-6xl text-lime-300"

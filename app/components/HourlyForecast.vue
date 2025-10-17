@@ -64,6 +64,7 @@ function goNext() {
           width="60"
           densities="x1 x2"
           class="w-5 h-5"
+          alt="Навигация на предыдущие погодные данные"
         />
       </button>
       <button
@@ -77,6 +78,7 @@ function goNext() {
           width="60"
           densities="x1 x2"
           class="w-5 h-5"
+          alt="Навигация на будущие погодные данные"
         />
       </button>
 
