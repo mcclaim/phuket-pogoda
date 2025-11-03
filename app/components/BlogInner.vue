@@ -9,7 +9,7 @@
         <p class="text-gray-200 text-sm">Дата: {{ date }}</p>
       </div>
       <h1
-        class="text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg"
+        class="text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg text-balance"
       >
         {{ blogData.title }}
       </h1>
@@ -27,7 +27,7 @@
     </div>
 
     <ContentRenderer
-      class="article-data font-medium text-shadow-lg"
+      class="article-data font-medium text-shadow-lg text-balance"
       :value="doc"
     />
   </article>

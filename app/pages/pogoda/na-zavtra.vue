@@ -104,6 +104,7 @@ useSeoHead({
         <button
           v-if="showLeftShadow"
           @click="goPrev()"
+          alt="Навигация на лево"
           class="flex absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white dark:bg-gray-700 shadow rounded-full p-2 hover:scale-110 transition"
         >
           <NuxtImg
@@ -118,6 +119,7 @@ useSeoHead({
         <button
           v-if="showRightShadow"
           @click="goNext()"
+          alt="Навигация на право"
           class="flex absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white dark:bg-gray-700 shadow rounded-full p-2 hover:scale-110 transition"
         >
           <NuxtImg

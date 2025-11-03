@@ -14,10 +14,10 @@
           lazy
         />
       </div>
-      <h2 class="text-lg font-semibold mb-2 pt-0">
+      <h2 class="text-lg font-semibold mb-2 pt-0 text-balance">
         {{ blogData.title }}
       </h2>
-      <p class="text-md text-gray-200">
+      <p class="text-md text-gray-200 text-balance">
         {{ blogData.desc }}
       </p>
     </nuxt-link>

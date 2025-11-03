@@ -35,7 +35,7 @@ defineProps<{
         :alt="`${weatherData.temperature_2m}°C к ${formatTime(
           weatherData.time
         )}`"
-        class="w-[60px] h-[60px] -order-1 mt-[-15px] sm:order-none sm:mt-0"
+        class="w-[60px] h-[60px] -order-1 mt-[-15px] sm:order-none sm:mt-0 aspect-[1/1]"
       />
     </div>
 

@@ -85,10 +85,25 @@ export default defineNuxtConfig({
   ],
 
   routeRules: {
-    "/": { prerender: true },
-    "/pogoda": { prerender: true },
+    "/": { isr: 60 },
+    "/pogoda/**": { isr: 60 },
     "/gid": { prerender: true },
-    "/soveti/**": { isr: 300 },
+    "/gid/**": { prerender: true },
+    "/soveti": { isr: 56400 },
+    "/soveti/**": { isr: 56400 },
+    // API: даём CDN-кэш + stale-while-revalidate
+    "/api/**": {
+      headers: {
+        "cache-control": "public, s-maxage=60, stale-while-revalidate=120",
+      },
+    },
+
+    // Nuxt assets
+    "/_nuxt/**": {
+      headers: {
+        "cache-control": "public, max-age=31536000, immutable",
+      },
+    },
   },
 
   sitemap: {
@@ -99,6 +114,7 @@ export default defineNuxtConfig({
     // Private keys that are only available on the server
     private: {
       unsplashSecretKey: process.env.UNSPLASH_ACCESS_KEY,
+      revalidateToken: process.env.REVALIDATE_TOKEN,
     },
     public: {
       siteUrl: process.env.SITE_URL,

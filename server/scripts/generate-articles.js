@@ -1,6 +1,7 @@
 import axios from "axios";
 import fs from "fs";
 import path from "path";
+import { revalidate } from "./ping-revalidate.js";
 
 const API_BASE = process.env.API_BASE_URL || "http://localhost:3000";
 const ARTICLE_PREFIX = process.env.ARTICLE_PREFIX || "pogoda-phukete-na-";
@@ -179,6 +180,18 @@ ${
 
       fs.writeFileSync(filePath, content, "utf8");
       console.log("Created article:", filePath);
+
+      // Вызов revalidate после создания файла — дождёмся ответа
+      try {
+        await revalidate([`/soveti/${slug}`]);
+        console.log("Revalidated:", `/soveti/${slug}`);
+      } catch (err) {
+        console.error(
+          "Revalidate failed for",
+          `/soveti/${slug}`,
+          err?.message || err
+        );
+      }
     }
 
     console.log("Done: generated", days, "articles.");
