@@ -20,6 +20,7 @@ export default defineNuxtConfig({
       title: "Погода в Пхукете - Phuket Weather",
       charset: "utf-8",
       meta: [
+        { name: "google-adsense-account", content: "ca-pub-1116254226795247" },
         { name: "theme-color", content: "#b0f146" },
         { name: "X-UA-Compatible", content: "IE=edge" },
         { name: "msapplication-TileColor", content: "#09F" },
@@ -55,6 +56,16 @@ export default defineNuxtConfig({
           color: "#09F",
           href: "/images/meta/safari-pinned-tab.svg",
         },
+      ],
+      script: [
+        // скрипт AdSense (часто Google даёт такой код)
+        {
+          // если нужно подключить внешний src
+          src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1116254226795247",
+          async: true,
+          crossorigin: "anonymous",
+        },
+        // если Google просит inline script (реже): можно добавить { children: "название_скрипта" }
       ],
     },
   },

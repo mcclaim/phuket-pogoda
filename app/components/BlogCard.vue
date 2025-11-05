@@ -12,6 +12,9 @@
           alt="Blog Image"
           format="webp"
           lazy
+          width="350px"
+          height="150px"
+          sizes="xs:300px xl:300px"
         />
       </div>
       <h2 class="text-lg font-semibold mb-2 pt-0 text-balance">
