@@ -55,7 +55,7 @@ useHead({
     {
       rel: "preload",
       as: "font",
-      href: "/fonts/Rubik-Semibold.woff2",
+      href: "/fonts/Rubik-SemiBold.woff2",
       type: "font/woff2",
       crossorigin: "anonymous",
     },

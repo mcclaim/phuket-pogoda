@@ -53,9 +53,9 @@ useSeoHead({
 </script>
 
 <template>
-  <div class="glass p-6">
+  <div class="glass p-6 pt-0 sm:pt-6">
     <h1
-      class="text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg mb-6"
+      class="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg mb-6"
     >
       Погода в Пхукете на завтра
     </h1>
@@ -104,6 +104,7 @@ useSeoHead({
         <button
           v-if="showLeftShadow"
           @click="goPrev()"
+          alt="Навигация на лево"
           class="flex absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white dark:bg-gray-700 shadow rounded-full p-2 hover:scale-110 transition"
         >
           <NuxtImg
@@ -118,6 +119,7 @@ useSeoHead({
         <button
           v-if="showRightShadow"
           @click="goNext()"
+          alt="Навигация на право"
           class="flex absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white dark:bg-gray-700 shadow rounded-full p-2 hover:scale-110 transition"
         >
           <NuxtImg

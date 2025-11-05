@@ -20,6 +20,7 @@ export default defineNuxtConfig({
       title: "Погода в Пхукете - Phuket Weather",
       charset: "utf-8",
       meta: [
+        { name: "google-adsense-account", content: "ca-pub-1116254226795247" },
         { name: "theme-color", content: "#b0f146" },
         { name: "X-UA-Compatible", content: "IE=edge" },
         { name: "msapplication-TileColor", content: "#09F" },
@@ -56,6 +57,16 @@ export default defineNuxtConfig({
           href: "/images/meta/safari-pinned-tab.svg",
         },
       ],
+      script: [
+        // скрипт AdSense (часто Google даёт такой код)
+        {
+          // если нужно подключить внешний src
+          src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1116254226795247",
+          async: true,
+          crossorigin: "anonymous",
+        },
+        // если Google просит inline script (реже): можно добавить { children: "название_скрипта" }
+      ],
     },
   },
 
@@ -85,10 +96,25 @@ export default defineNuxtConfig({
   ],
 
   routeRules: {
-    "/": { prerender: true },
-    "/pogoda": { prerender: true },
+    "/": { isr: 60 },
+    "/pogoda/**": { isr: 60 },
     "/gid": { prerender: true },
-    "/soveti/**": { isr: 300 },
+    "/gid/**": { prerender: true },
+    "/soveti": { isr: 56400 },
+    "/soveti/**": { isr: 56400 },
+    // API: даём CDN-кэш + stale-while-revalidate
+    "/api/**": {
+      headers: {
+        "cache-control": "public, s-maxage=60, stale-while-revalidate=120",
+      },
+    },
+
+    // Nuxt assets
+    "/_nuxt/**": {
+      headers: {
+        "cache-control": "public, max-age=31536000, immutable",
+      },
+    },
   },
 
   sitemap: {
@@ -99,6 +125,7 @@ export default defineNuxtConfig({
     // Private keys that are only available on the server
     private: {
       unsplashSecretKey: process.env.UNSPLASH_ACCESS_KEY,
+      revalidateToken: process.env.REVALIDATE_TOKEN,
     },
     public: {
       siteUrl: process.env.SITE_URL,
