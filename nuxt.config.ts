@@ -98,8 +98,8 @@ export default defineNuxtConfig({
   routeRules: {
     "/": { isr: 60 },
     "/pogoda/**": { isr: 60 },
-    "/gid": { prerender: true },
-    "/gid/**": { prerender: true },
+    "/gid": { isr: 29000 },
+    "/gid/**": { isr: 29000 },
     "/soveti": { isr: 56400 },
     "/soveti/**": { isr: 56400 },
     // API: даём CDN-кэш + stale-while-revalidate
