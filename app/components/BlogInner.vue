@@ -26,10 +26,16 @@
       />
     </div>
 
-    <ContentRenderer
+    <MDC
+      :value="doc"
+      tag="article"
+      class="article-data font-medium text-shadow-lg text-balance"
+    />
+
+    <!-- <ContentRenderer
       class="article-data font-medium text-shadow-lg text-balance"
       :value="doc"
-    />
+    /> -->
   </article>
 </template>
 

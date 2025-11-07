@@ -84,16 +84,7 @@ export default defineNuxtConfig({
     "swiper/css/grid",
   ],
 
-  modules: [
-    "@nuxt/content",
-    "@nuxt/eslint",
-    "@nuxt/fonts",
-    "@nuxt/image",
-    "@nuxt/scripts",
-    "@nuxtjs/tailwindcss",
-    "@nuxtjs/sitemap",
-    "@nuxtjs/robots",
-  ],
+  modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxt/scripts", "@nuxtjs/tailwindcss", "@nuxtjs/sitemap", "@nuxtjs/robots", "@nuxtjs/mdc"],
 
   routeRules: {
     "/": { isr: 60 },
