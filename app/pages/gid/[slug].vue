@@ -1,5 +1,5 @@
 <template>
-  <div class="glass p-6">
+  <div class="glass py-4 p-6 sm:py-6">
     <blog-inner
       v-if="blogData"
       :blog-data="{

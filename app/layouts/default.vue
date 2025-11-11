@@ -2,7 +2,7 @@
   <div id="app">
     <LayoutAppHeader />
 
-    <main class="flex-1 py-4 relative z-[1]">
+    <main class="flex-1 py-4 relative z-[1] overflow-hidden">
       <div class="container xl:max-w-7xl mx-auto px-4">
         <slot />
       </div>

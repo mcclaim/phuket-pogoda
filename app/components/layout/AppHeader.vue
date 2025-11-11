@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-// import { articleMenuActive } from "#shared/utils/menuActive.helper";
 import { ref } from "vue";
 import type { RouteLocationNormalizedLoaded } from "vue-router";
+import { NAVIGATION_CONSTANTS } from "#shared/constants/navigation.constant";
 
 const isOpen = ref(false);
 const dropdownOpen = ref(false);
@@ -123,7 +123,7 @@ watch(
       >
         <!-- Главная -->
         <NuxtLink
-          to="/"
+          :to="NAVIGATION_CONSTANTS.HOME.route"
           class="nav__link flex items-center gap-2"
           active-class="active"
           exact-active-class="active"
@@ -136,7 +136,7 @@ watch(
             class="inline-block"
           />
 
-          <span>Погода на сегодня</span>
+          <span>{{ NAVIGATION_CONSTANTS.HOME.title }}</span>
         </NuxtLink>
 
         <!-- Прогноз -->
@@ -144,7 +144,9 @@ watch(
           <button
             class="nav__link w-full xs:w-none"
             :class="{
-              active: articleMenuActive(route, ['/pogoda']),
+              active: articleMenuActive(route, [
+                NAVIGATION_CONSTANTS.FORECAST.route,
+              ]),
             }"
             @click="toggleDropdown"
           >
@@ -156,7 +158,7 @@ watch(
               class="inline-block mr-2"
             />
 
-            <span>Прогноз</span>
+            <span>{{ NAVIGATION_CONSTANTS.FORECAST.title }}</span>
             <svg
               class="w-5 h-5 ml-auto transition-transform md:w-4 md:h-4 md:ml-1"
               :class="{ 'rotate-180': dropdownOpen }"
@@ -179,70 +181,17 @@ watch(
             :class="{ 'md:!hidden': !dropdownOpen }"
           >
             <NuxtLink
-              to="/pogoda/na-zavtra"
+              v-for="nav in NAVIGATION_CONSTANTS.FORECAST.children"
+              :key="nav.route"
+              :to="nav.route"
               :class="[
                 'header__dropdown-item',
                 {
-                  active: articleMenuActive(route, ['/pogoda/na-zavtra']),
+                  active: articleMenuActive(route, [nav.route]),
                 },
               ]"
             >
-              Завтра
-            </NuxtLink>
-            <NuxtLink
-              to="/pogoda/na-nedelyu"
-              :class="[
-                'header__dropdown-item',
-                {
-                  active: articleMenuActive(route, ['/pogoda/na-nedelyu']),
-                },
-              ]"
-            >
-              На неделю
-            </NuxtLink>
-            <NuxtLink
-              to="/pogoda/10-dney"
-              :class="[
-                'header__dropdown-item',
-                {
-                  active: articleMenuActive(route, ['/pogoda/10-dney']),
-                },
-              ]"
-            >
-              На 10 дней
-            </NuxtLink>
-            <NuxtLink
-              to="/pogoda/15-dney"
-              :class="[
-                'header__dropdown-item',
-                {
-                  active: articleMenuActive(route, ['/pogoda/15-dney']),
-                },
-              ]"
-            >
-              На 15 дней
-            </NuxtLink>
-            <NuxtLink
-              to="/pogoda/na-vyhodnye"
-              :class="[
-                'header__dropdown-item',
-                {
-                  active: articleMenuActive(route, ['/pogoda/na-vyhodnye']),
-                },
-              ]"
-            >
-              На выходные
-            </NuxtLink>
-            <NuxtLink
-              to="/pogoda/na-mesyats"
-              :class="[
-                'header__dropdown-item',
-                {
-                  active: articleMenuActive(route, ['/pogoda/na-mesyats']),
-                },
-              ]"
-            >
-              На месяц
+              {{ nav.title }}
             </NuxtLink>
           </div>
         </div>
@@ -264,7 +213,7 @@ watch(
               class="inline-block mr-2"
             />
 
-            <span>Статьи</span>
+            <span>{{ NAVIGATION_CONSTANTS.ARTICLES.title }}</span>
             <svg
               class="w-5 h-5 ml-auto transition-transform md:w-4 md:h-4 md:ml-1"
               :class="{ 'rotate-180': articleDropdownOpen }"
@@ -287,33 +236,57 @@ watch(
             :class="{ 'md:!hidden': !articleDropdownOpen }"
           >
             <NuxtLink
-              to="/soveti"
+              :to="NAVIGATION_CONSTANTS.ARTICLES.children.RECOMMENDATION.route"
               :class="[
                 'header__dropdown-item',
                 {
-                  active: articleMenuActive(route, ['/soveti']),
+                  active: articleMenuActive(route, [
+                    NAVIGATION_CONSTANTS.ARTICLES.children.RECOMMENDATION.route,
+                  ]),
                 },
               ]"
             >
-              Советы на неделю
+              {{ NAVIGATION_CONSTANTS.ARTICLES.children.RECOMMENDATION.title }}
             </NuxtLink>
 
             <NuxtLink
-              to="/gid"
+              :to="NAVIGATION_CONSTANTS.ARTICLES.children.GUIDE.route"
               :class="[
                 'header__dropdown-item',
                 {
-                  active: articleMenuActive(route, ['/gid']),
+                  active: articleMenuActive(route, [
+                    NAVIGATION_CONSTANTS.ARTICLES.children.GUIDE.route,
+                  ]),
                 },
               ]"
             >
-              Гид по Пхукету
+              {{ NAVIGATION_CONSTANTS.ARTICLES.children.GUIDE.title }}
             </NuxtLink>
           </div>
         </div>
       </nav>
     </div>
   </header>
+  <div class="mobile-forecast-menu container">
+    <div class="mobile-forecast-menu__container">
+      <div
+        class="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-gray-200/80 to-transparent dark:from-gray-800/80"
+      ></div>
+      <NuxtLink
+        v-for="nav in NAVIGATION_CONSTANTS.FORECAST.children"
+        :key="nav.route"
+        :to="nav.route"
+        :class="[
+          'mobile-forecast-menu__item',
+          {
+            active: articleMenuActive(route, [nav.route]),
+          },
+        ]"
+      >
+        {{ nav.title }}
+      </NuxtLink>
+    </div>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -362,6 +335,23 @@ watch(
 
     &.active {
       @apply bg-lime-600 text-white;
+    }
+  }
+}
+
+.mobile-forecast-menu {
+  @apply xl:max-w-7xl mx-auto md:hidden pt-4 px-4;
+
+  &__container {
+    @apply bg-opacity-50 backdrop-blur-sm flex gap-1 rounded-full z-10 relative overflow-auto py-2 px-4;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  &__item {
+    @apply flex-1 inline-flex items-center justify-center align-middle select-none text-center duration-300 ease-in text-sm py-1 px-3 relative text-white rounded-full whitespace-nowrap font-medium sm:py-2 sm:px-4;
+
+    &.active {
+      @apply bg-white text-stone-900;
     }
   }
 }

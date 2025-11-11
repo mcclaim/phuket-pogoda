@@ -1,5 +1,5 @@
 <template>
-  <div class="glass p-6">
+  <div class="glass py-4 p-6 sm:py-6">
     <h2 class="text-2xl sm:text-3xl font-semibold pt-0">Текущая погода</h2>
     <div class="grid grid-cols-12 gap-4">
       <div
@@ -23,7 +23,7 @@
         </p>
       </div>
 
-      <div class="col-span-12 sm:col-span-6 lg:col-span-3 text-lg">
+      <div class="col-span-12 sm:col-span-6 lg:col-span-3 text-md sm:text-lg">
         <p>
           Ощущается как:
           <span class="text-lime-300 font-bold"
@@ -45,7 +45,7 @@
       </div>
 
       <div
-        class="col-span-12 sm:col-span-12 lg:col-span-6 text-lg order-1 lg:-order-none"
+        class="col-span-12 sm:col-span-12 lg:col-span-6 text-md sm:text-lg order-1 lg:-order-none"
       >
         <p>
           Купание:
@@ -67,7 +67,7 @@
         </p>
       </div>
 
-      <div class="col-span-12 sm:col-span-6 lg:col-span-3 text-lg">
+      <div class="col-span-12 sm:col-span-6 lg:col-span-3 text-md sm:text-lg">
         <p>
           Давление:
           <span class="text-lime-300 font-bold"

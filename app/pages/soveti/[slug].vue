@@ -1,35 +1,39 @@
 <template>
-  <div class="glass p-6">
+  <div class="glass py-4 p-6 sm:py-6">
     <blog-inner
       v-if="blogData"
       :blog-data="{
-        title: blogData.title || '',
+        title: blogData?.meta?.title || '',
         desc: blogData.meta.desc,
         date: blogData.meta.date,
         img: blogData.meta.img,
       }"
       url="/soveti"
-      :doc="blogData"
+      :doc="blogData.body"
     />
 
     <div v-else class="text-center text-2xl">Статья не найдена.</div>
   </div>
 </template>
 <script setup lang="ts">
-import type { BlogData } from "#shared/types/BlogData.type";
-
 const route = useRoute();
 const slug = route.params.slug as string;
 
-const { data: blogData } = await useAsyncData(route.path, () => {
-  return queryCollection("content")
-    .path(route.path)
-    .first() as Promise<BlogData>;
-});
+const { data: blogData } = await useAsyncData(
+  route.path,
+  () =>
+    $fetch(`/api/soveti/${slug}`) as Promise<{
+      slug: string;
+      meta: Record<string, any>;
+      body: string;
+      bodyHtml: string;
+    }>
+);
 
 useSeoHead({
   title:
-    blogData.value?.title || "Советы по Пхукету, все что нужно знать туристу",
+    blogData.value?.meta?.title ||
+    "Гид по Пхукету, все что нужно знать туристу",
   desc: blogData.value?.meta.desc || "",
   date: blogData.value?.meta.date || "",
   img: blogData.value?.meta.img || "",

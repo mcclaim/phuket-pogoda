@@ -5,6 +5,7 @@ export function useSeoHead(statya: {
   date: string;
   img?: string;
   urlPath: string;
+  contentType?: string;
 }) {
   const config = useRuntimeConfig();
   const url = config.public.siteUrl + statya.urlPath;
@@ -29,7 +30,7 @@ export function useSeoHead(statya: {
       },
 
       // Open Graph (для Facebook, Telegram, WhatsApp и т.д.)
-      { property: "og:type", content: "statya" },
+      { property: "og:type", content: statya.contentType || "article" },
       { property: "og:title", content: statya.title },
       { property: "og:description", content: statya.desc },
       { property: "og:url", content: url },
