@@ -1,4 +1,5 @@
 import { $fetch } from "ofetch";
+const config = useRuntimeConfig();
 
 let cachedPhotos: any[] = [];
 let lastFetchTime: number | null = null;
@@ -21,7 +22,7 @@ export default defineEventHandler(async () => {
       query: {
         query: "phuket",
         count: 15,
-        client_id: process.env.UNSPLASH_ACCESS_KEY,
+        client_id: config.private.unsplashSecretKey,
         w: 450,
         h: 250,
         q: 80,
