@@ -38,7 +38,7 @@ export const NAVIGATION_CONSTANTS = {
     route: "/articles",
     children: {
       RECOMMENDATION: {
-        title: "Советы на ближайщие дни",
+        title: "Советы для Пхукета",
         route: "/soveti",
       },
       GUIDE: {

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <NuxtLoadingIndicator />
     <LayoutAppHeader />
 
     <main class="flex-1 py-4 relative z-[1] overflow-hidden">
