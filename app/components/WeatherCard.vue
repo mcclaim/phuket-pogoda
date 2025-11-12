@@ -21,7 +21,7 @@ defineProps<{
     >
       <div class="flex flex-col">
         <div class="font-medium">{{ formatTime(weatherData.time) }}</div>
-        <div class="text-3xl font-bold py-1">
+        <div class="text-2xl font-bold py-1 sm:text-3xl">
           {{ weatherData.temperature_2m }}°C
         </div>
       </div>
@@ -35,7 +35,7 @@ defineProps<{
         :alt="`${weatherData.temperature_2m}°C к ${formatTime(
           weatherData.time
         )}`"
-        class="w-[60px] h-[60px] -order-1 mt-[-15px] sm:order-none sm:mt-0 aspect-[1/1]"
+        class="w-[60px] h-[60px] -order-1 mt-[-15px] sm:order-none sm:mt-0"
       />
     </div>
 

@@ -11,13 +11,14 @@ useSeoHead({
     "погода в Пхукете на неделю, погода в Пхукете на 7 дней, погода Пхукет неделя, погода Пхукет 7 дней, прогноз погоды в Пхукете на неделю, прогноз погоды в Пхукете на 7 дней, прогноз погоды неделя, прогноз погоды Пхукет 7 дней",
   date: "на неделю",
   urlPath: "/na-nedelyu",
+  contentType: "website",
 });
 </script>
 
 <template>
   <div class="glass p-6 pt-0 sm:pt-6">
     <h1
-      class="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg mb-6"
+      class="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg mb-4 md:mb-6 sm:pt-0"
     >
       Погода в Пхукете на неделю
     </h1>

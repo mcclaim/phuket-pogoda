@@ -36,8 +36,10 @@ function goNext() {
 </script>
 
 <template>
-  <div class="glass p-6">
-    <h2 class="text-2xl font-semibold mb-5 pt-0">Погода за 24 часа</h2>
+  <div class="glass py-4 p-6 sm:py-6">
+    <h2 class="text-xl font-semibold mb-4 pt-0 sm:text-2xl sm:mb-5">
+      Погода за 24 часа
+    </h2>
 
     <div class="relative">
       <!-- Left shadow -->
@@ -72,7 +74,7 @@ function goNext() {
         v-if="showRightShadow"
         @click="goNext()"
         alt="Навигация на право"
-        class="flex absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white dark:bg-gray-700 shadow rounded-full p-2 hover:scale-110 transition"
+        class="flex absolute right-[-18px] top-1/2 -translate-y-1/2 z-20 bg-white dark:bg-gray-700 shadow rounded-full p-2 hover:scale-110 transition"
       >
         <NuxtImg
           :src="iconUrl('chevron-right')"
@@ -95,7 +97,7 @@ function goNext() {
         }"
         :grab-cursor="true"
         :breakpoints="{
-          320: { slidesPerView: 1.5, spaceBetween: 16 },
+          320: { slidesPerView: 2, spaceBetween: 10 },
           430: { slidesPerView: 2, spaceBetween: 16 },
           500: { slidesPerView: 2, spaceBetween: 16 },
           640: { slidesPerView: 2, spaceBetween: 20 },

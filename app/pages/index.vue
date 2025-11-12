@@ -18,6 +18,7 @@ useSeoHead({
   desc: "Погода в Пхукете на сегодня, подробный прогноз погоды на сегодня для островов Пхукета, Пхукет, Таиланд.",
   date: formatOnlyDate(new Date().toDateString()),
   urlPath: "/",
+  contentType: "website",
 });
 
 const { data: forecast, pending } = await useCurrentWeather();

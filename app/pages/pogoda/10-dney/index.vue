@@ -16,7 +16,7 @@ const { data: forecast, pending } = await useForecastWeather();
 <template>
   <div class="glass p-6 pt-0 sm:pt-6">
     <h1
-      class="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg mb-6"
+      class="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg mb-4 md:mb-6 sm:pt-0"
     >
       Погода в Пхукете на 10 дней
     </h1>

@@ -14,6 +14,7 @@ export interface BlogListData {
   path: string;
   id: string;
   img?: string | null;
+  date?: string;
 }
 export interface BlogCardData {
   cardClass?: string | object | Array<string | object>;

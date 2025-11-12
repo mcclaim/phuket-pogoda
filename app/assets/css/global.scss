@@ -1,6 +1,31 @@
 html {
   overflow-y: scroll; /* фолбэк для старых браузеров */
   scrollbar-gutter: stable; /* современное решение */
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.3);
+    background: #bef264;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #bef264;
+    background-image: -webkit-linear-gradient(
+      20deg,
+      rgba(255, 255, 255, 0.5) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0.5) 75%,
+      transparent 75%
+    );
+    border-radius: 5px;
+  }
 }
 
 body {
@@ -8,6 +33,7 @@ body {
   font-size: var(--font-size);
   font-weight: 400;
   font-family: "Rubik", sans-serif;
+  overflow: overlay;
 }
 
 .layout {

@@ -47,7 +47,7 @@ function formatTime(time) {
 (async function run() {
   try {
     console.log("Start generating articles...");
-    const dir = path.join(process.cwd(), "content", "soveti");
+    const dir = path.join(process.cwd(), "public", "soveti");
     fs.mkdirSync(dir, { recursive: true });
 
     const forecast = await fetchForecast();
