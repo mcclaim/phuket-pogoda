@@ -1,12 +1,11 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
+import { findPublicDir } from "../../utils/findPublicDir";
 
 export default defineEventHandler(async () => {
-  // Папка с markdown файлами
-  const dir = path.resolve(process.cwd(), "public", "gid");
-
-  if (!fs.existsSync(dir)) return [];
+  const dir = findPublicDir("gid");
+  if (!dir) return [];
 
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
 

@@ -8,12 +8,15 @@ const md = new MarkdownIt();
 
 export default defineEventHandler((event) => {
   const { slug } = event.context.params as { slug: string };
-  const filePath = path.resolve(
-    process.cwd(),
-    "public",
-    "soveti",
-    `${slug}.md`
-  );
+  const dir = findPublicDir("soveti");
+  if (!dir) {
+    return sendError(
+      event,
+      createError({ statusCode: 500, statusMessage: "Folder not found" })
+    );
+  }
+
+  const filePath = path.join(dir, `${slug}.md`);
   if (!fs.existsSync(filePath)) {
     return sendError(
       event,

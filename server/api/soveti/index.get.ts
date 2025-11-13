@@ -3,10 +3,8 @@ import matter from "gray-matter";
 import path from "path";
 
 export default defineEventHandler(async () => {
-  // Папка с markdown файлами
-  const dir = path.resolve(process.cwd(), "public", "soveti");
-
-  if (!fs.existsSync(dir)) return [];
+  const dir = findPublicDir("soveti");
+  if (!dir) return [];
 
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
 

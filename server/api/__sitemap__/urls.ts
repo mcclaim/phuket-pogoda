@@ -2,6 +2,7 @@ import { defineSitemapEventHandler } from "#imports";
 import type { SitemapUrlInput } from "#sitemap/types";
 import { promises as fs } from "fs";
 import path from "path";
+import { findPublicDir } from "../../utils/findPublicDir";
 
 async function urlsFromDir(
   dirPath: string,
@@ -37,9 +38,11 @@ async function urlsFromDir(
 }
 
 export default defineSitemapEventHandler(async () => {
-  const root = process.cwd();
-  const gidDir = path.resolve(root, "content", "gid");
-  const sovetiDir = path.resolve(root, "content", "soveti");
+  // const root = process.cwd();
+  /* const gidDir = path.resolve(root, "content", "gid");
+  const sovetiDir = path.resolve(root, "content", "soveti"); */
+  const gidDir = findPublicDir("gid");
+  const sovetiDir = findPublicDir("soveti");
 
   const [gidUrls, sovetiUrls] = await Promise.all([
     urlsFromDir(gidDir, "gid"),
