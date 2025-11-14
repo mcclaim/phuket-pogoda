@@ -41,7 +41,7 @@ watch(
 </script>
 
 <template>
-  <header class="header layout__glass !backdrop-blur-none">
+  <header class="header layout__glass !backdrop-blur-none sticky top-0">
     <div
       class="container xl:max-w-7xl mx-auto flex items-center justify-between"
     >

@@ -38,9 +38,6 @@ async function urlsFromDir(
 }
 
 export default defineSitemapEventHandler(async () => {
-  // const root = process.cwd();
-  /* const gidDir = path.resolve(root, "content", "gid");
-  const sovetiDir = path.resolve(root, "content", "soveti"); */
   const gidDir = findPublicDir("gid");
   const sovetiDir = findPublicDir("soveti");
 
