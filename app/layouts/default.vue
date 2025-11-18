@@ -60,9 +60,42 @@
   @apply min-h-screen relative flex flex-col;
 
   &:before {
-    background: url("~/assets/images/bg-5.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: -webkit-image-set(
+      url("~/assets/images/backgrounds/bg-desktop.webp") 1x,
+      url("~/assets/images/backgrounds/bg-desktop@2x.webp") 2x
+    );
+    background-image: image-set(
+      url("~/assets/images/backgrounds/bg-desktop.webp") 1x,
+      url("~/assets/images/backgrounds/bg-desktop@2x.webp") 2x
+    );
+    background-color: #000;
     content: "";
     @apply absolute top-0 left-0 right-0 bottom-0 bg-cover;
+
+    @media (max-width: 768px) {
+      background-image: -webkit-image-set(
+        url("~/assets/images/backgrounds/bg-768.webp") 1x,
+        url("~/assets/images/backgrounds/bg-768@2x.webp") 2x
+      );
+      background-image: image-set(
+        url("~/assets/images/backgrounds/bg-768.webp") 1x,
+        url("~/assets/images/backgrounds/bg-768@2x.webp") 2x
+      );
+    }
+
+    @media (max-width: 480px) {
+      background-image: -webkit-image-set(
+        url("~/assets/images/backgrounds/bg-480.webp") 1x,
+        url("~/assets/images/backgrounds/bg-480@2x.webp") 2x
+      );
+      background-image: image-set(
+        url("~/assets/images/backgrounds/bg-480.webp") 1x,
+        url("~/assets/images/backgrounds/bg-480@2x.webp") 2x
+      );
+    }
   }
 
   &:after {

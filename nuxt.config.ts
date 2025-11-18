@@ -31,6 +31,7 @@ export default defineNuxtConfig({
           name: "apple-mobile-web-app-status-bar-style",
           content: "black",
         },
+        { name: "agd-partner-manual-verification", content: "" },
       ],
       link: [
         { rel: "mask-icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -84,7 +85,17 @@ export default defineNuxtConfig({
     "swiper/css/grid",
   ],
 
-  modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxt/scripts", "@nuxtjs/tailwindcss", "@nuxtjs/sitemap", "@nuxtjs/robots", "@nuxtjs/mdc"],
+  modules: [
+    "@nuxt/content",
+    "@nuxt/eslint",
+    "@nuxt/fonts",
+    "@nuxt/image",
+    "@nuxt/scripts",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
+    "@nuxtjs/mdc",
+  ],
 
   routeRules: {
     "/": { isr: 60 },

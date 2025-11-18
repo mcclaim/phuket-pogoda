@@ -1,10 +1,12 @@
 <template>
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-2">
     <Loader v-if="pending && !forecast.current && !forecast.hourly" />
 
     <section v-if="!pending && forecast.current">
       <CurrentForecast :weather="forecast.current" />
     </section>
+
+    <AdsKlookWidget />
 
     <section v-if="!pending && forecast.hourly">
       <HourlyForecast :hours="forecast.hourly" />

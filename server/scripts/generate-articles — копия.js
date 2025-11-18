@@ -6,14 +6,43 @@ import { fileURLToPath } from "url";
 const API_BASE = process.env.API_BASE_URL || "https://phuket-pogoda.ru";
 const ARTICLE_PREFIX = process.env.ARTICLE_PREFIX || "pogoda-phukete-na-";
 
+// Добавим в массив PLACES поле cta для Markdown
 const PLACES = [
-  { name: "Можно ли ехать в остров Пхи-Пхи?", slug: "phi-phi" },
-  { name: "Можно ли ехать в остров Джеймса Бонда?", slug: "james-bond" },
-  { name: "Можно ли ехать в Симиланские острова?", slug: "similan" },
-  { name: "Можно ли ехать в остров Самуи?", slug: "samui" },
-  { name: "Можно ли ехать в остров Панган?", slug: "pangan" },
-  { name: "Можно ли ехать в остров Ланга?", slug: "langa" },
-  { name: "Можно ли погулять в Бангла роуд?", slug: "bangla-road" },
+  {
+    name: "Можно ли ехать в остров Пхи-Пхи?",
+    slug: "phi-phi",
+    cta: "[Забронируйте тур на Пхи-Пхи по выгодной цене](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163550&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F64800-phi-phi-khai-islands-one-day-tour%2F) — лучшие экскурсии и трансферы!",
+  },
+  {
+    name: "Можно ли ехать в остров Джеймса Бонда?",
+    slug: "james-bond",
+    cta: "[Забронируйте тур на остров Джеймса Бонда](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163554&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F3227-james-bond-day-tour-big-boat-longtail-speedboat%2F) — места ограничены!",
+  },
+  {
+    name: "Можно ли ехать в Симиланские острова?",
+    slug: "similan",
+    cta: "[Забронируйте тур на Симиланские острова](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163554&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F3227-james-bond-day-tour-big-boat-longtail-speedboat%2F) — снорклинг, дайвинг и лучшие цены!",
+  },
+  {
+    name: "Можно ли ехать в остров Самуи?",
+    slug: "samui",
+    cta: "[Забронируйте тур на Самуи](https://www.klook.com/ru/city/104-samui/) — пляжи, экскурсии и трансферы по выгодным ценам!",
+  },
+  {
+    name: "Можно ли ехать в остров Панган?",
+    slug: "pangan",
+    cta: "[Забронируйте тур на Панган](https://www.klook.com/ru/city/105-pangan/) — Full Moon Party и тихие бухты ждут вас!",
+  },
+  {
+    name: "Можно ли ехать в остров Ланга?",
+    slug: "langa",
+    cta: "[Забронируйте тур на Ланга](https://www.klook.com/ru/city/106-langa/) — спокойный рай и лучшие цены на экскурсии!",
+  },
+  {
+    name: "Можно ли погулять в Бангла роуд?",
+    slug: "bangla-road",
+    cta: "[Забронируйте экскурсию на Бангла Роуд](https://www.klook.com/ru/city/107-bangla-road/) — ночная жизнь и развлечения по выгодным ценам!",
+  },
 ];
 
 async function fetchForecast() {
