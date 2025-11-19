@@ -21,17 +21,17 @@ const PLACES = [
   {
     name: "Можно ли ехать в Симиланские острова?",
     slug: "similan",
-    cta: "[Забронируйте тур на Симиланские острова](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163554&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F3227-james-bond-day-tour-big-boat-longtail-speedboat%2F) — снорклинг, дайвинг и лучшие цены!",
+    cta: "[Забронируйте тур на Симиланские острова](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163933&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F99532-similan-phuket-1-day-hop-on-off-boat-tour-speedboat-khao-lak%2F) — снорклинг, дайвинг и лучшие цены!",
   },
   {
     name: "Можно ли ехать в остров Самуи?",
     slug: "samui",
-    cta: "[Забронируйте тур на Самуи](https://www.klook.com/ru/city/104-samui/) — пляжи, экскурсии и трансферы по выгодным ценам!",
+    cta: "[Забронируйте тур на Самуи](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163933&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F99532-similan-phuket-1-day-hop-on-off-boat-tour-speedboat-khao-lak%2F) — пляжи, экскурсии и трансферы по выгодным ценам!",
   },
   {
     name: "Можно ли ехать в остров Панган?",
     slug: "pangan",
-    cta: "[Забронируйте тур на Панган](https://www.klook.com/ru/city/105-pangan/) — Full Moon Party и тихие бухты ждут вас!",
+    cta: "[Забронируйте тур на Панган](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163948&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F91504-phuket-must-see-atv-experience-phuket-join-half-day-tour%2F) — Full Moon Party и тихие бухты ждут вас!",
   },
   {
     name: "Можно ли ехать в остров Ланга?",
@@ -41,7 +41,7 @@ const PLACES = [
   {
     name: "Можно ли погулять в Бангла роуд?",
     slug: "bangla-road",
-    cta: "[Забронируйте экскурсию на Бангла Роуд](https://www.klook.com/ru/city/107-bangla-road/) — ночная жизнь и развлечения по выгодным ценам!",
+    cta: "[Забронируйте экскурсию на Бангла Роуд](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163953&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F292-simon-cabaret-show-phuket%2F) — ночная жизнь и развлечения по выгодным ценам!",
   },
 ];
 

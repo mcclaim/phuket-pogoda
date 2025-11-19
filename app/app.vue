@@ -1,4 +1,7 @@
 <template>
+  <AdsGoogleTagManager />
+  <AdsYandexMetrics />
+
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
