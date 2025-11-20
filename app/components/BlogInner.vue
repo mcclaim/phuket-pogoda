@@ -26,10 +26,14 @@
       />
     </div>
 
+    <div>
+      <AdsKlookBlogInner />
+    </div>
+
     <MDC
       :value="doc"
       tag="article"
-      class="article-data font-medium text-shadow-lg text-balance"
+      class="article-data text-shadow-lg text-balance"
     />
 
     <!-- <ContentRenderer
@@ -51,4 +55,17 @@ const date = computed(
 );
 </script>
 
-<style></style>
+<style style="scss">
+article .article-data {
+  text-shadow: 1px 0 rgb(0 0 0 / 50%);
+  p {
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        color: #04b7ff;
+      }
+    }
+  }
+}
+</style>

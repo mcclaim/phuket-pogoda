@@ -1,18 +1,48 @@
 import axios from "axios";
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
-const API_BASE = process.env.API_BASE_URL || "http://localhost:3000";
+const API_BASE = process.env.API_BASE_URL || "https://phuket-pogoda.ru";
 const ARTICLE_PREFIX = process.env.ARTICLE_PREFIX || "pogoda-phukete-na-";
 
+// Добавим в массив PLACES поле cta для Markdown
 const PLACES = [
-  { name: "Можно ли ехать в остров Пхи-Пхи?", slug: "phi-phi" },
-  { name: "Можно ли ехать в остров Джеймса Бонда?", slug: "james-bond" },
-  { name: "Можно ли ехать в Симиланские острова?", slug: "similan" },
-  { name: "Можно ли ехать в остров Самуи?", slug: "samui" },
-  { name: "Можно ли ехать в остров Панган?", slug: "pangan" },
-  { name: "Можно ли ехать в остров Ланга?", slug: "langa" },
-  { name: "Можно ли погулять в Бангла роуд?", slug: "bangla-road" },
+  {
+    name: "Можно ли ехать в остров Пхи-Пхи?",
+    slug: "phi-phi",
+    cta: "[Забронируйте тур на Пхи-Пхи по выгодной цене](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163550&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F64800-phi-phi-khai-islands-one-day-tour%2F) — лучшие экскурсии и трансферы!",
+  },
+  {
+    name: "Можно ли ехать в остров Джеймса Бонда?",
+    slug: "james-bond",
+    cta: "[Забронируйте тур на остров Джеймса Бонда](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163554&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F3227-james-bond-day-tour-big-boat-longtail-speedboat%2F) — места ограничены!",
+  },
+  {
+    name: "Можно ли ехать в Симиланские острова?",
+    slug: "similan",
+    cta: "[Забронируйте тур на Симиланские острова](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163933&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F99532-similan-phuket-1-day-hop-on-off-boat-tour-speedboat-khao-lak%2F) — снорклинг, дайвинг и лучшие цены!",
+  },
+  {
+    name: "Можно ли ехать в остров Самуи?",
+    slug: "samui",
+    cta: "[Забронируйте тур на Самуи](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163933&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F99532-similan-phuket-1-day-hop-on-off-boat-tour-speedboat-khao-lak%2F) — пляжи, экскурсии и трансферы по выгодным ценам!",
+  },
+  {
+    name: "Можно ли ехать в остров Панган?",
+    slug: "pangan",
+    cta: "[Забронируйте тур на Панган](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163948&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F91504-phuket-must-see-atv-experience-phuket-join-half-day-tour%2F) — Full Moon Party и тихие бухты ждут вас!",
+  },
+  {
+    name: "Можно ли ехать в остров Ланга?",
+    slug: "langa",
+    cta: "[Забронируйте тур на Ланга](https://www.klook.com/ru/city/106-langa/) — спокойный рай и лучшие цены на экскурсии!",
+  },
+  {
+    name: "Можно ли погулять в Бангла роуд?",
+    slug: "bangla-road",
+    cta: "[Забронируйте экскурсию на Бангла Роуд](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163953&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F292-simon-cabaret-show-phuket%2F) — ночная жизнь и развлечения по выгодным ценам!",
+  },
 ];
 
 async function fetchForecast() {
@@ -44,10 +74,35 @@ function formatTime(time) {
   });
 }
 
+function findPublicDir(subdir) {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
+  const candidates = [
+    // когда запускают из корня проекта
+    path.join(process.cwd(), "public", subdir),
+    // когда запускают из server/
+    path.join(__dirname, "..", "public", subdir),
+    // когда код собран в .output/server
+    path.join(__dirname, "..", "..", "public", subdir),
+    // запасной вариант для Nitro
+    path.join(process.cwd(), ".output", "public", subdir),
+  ];
+
+  for (const c of candidates) {
+    if (fs.existsSync(c) && fs.statSync(c).isDirectory()) {
+      return c;
+    }
+  }
+
+  console.error(`[findPublicDir] Folder not found: ${subdir}`, candidates);
+  return "";
+}
+
 (async function run() {
   try {
     console.log("Start generating articles...");
-    const dir = path.join(process.cwd(), "public", "soveti");
+    const dir = findPublicDir("soveti");
     fs.mkdirSync(dir, { recursive: true });
 
     const forecast = await fetchForecast();
@@ -122,6 +177,7 @@ ${
     ? "Поездку лучше перенести — возможен шторм или сильный ветер."
     : "Погода благоприятная для поездки на остров."
 }
+    ${PLACES[0].cta}
 
 ### ${PLACES[1].name}
 ${
@@ -129,6 +185,7 @@ ${
     ? "Есть риск дождя — берите дождевик."
     : "Отличная погода для фото и прогулки к месту Джеймса Бонда."
 }
+    ${PLACES[1].cta}
 
 ### ${PLACES[2].name}
 ${
@@ -136,6 +193,7 @@ ${
     ? "Высокий ветер — будьте осторожны, возможна отмена туров."
     : "Можно ехать — море ожидается спокойным."
 }
+    ${PLACES[2].cta}
 
 ### ${PLACES[3].name}
 ${
@@ -143,6 +201,7 @@ ${
     ? "Лучше перенести поездку — штормовое предупреждение."
     : "Погода позволяет — поездка на Самуи будет комфортной."
 }
+    ${PLACES[3].cta}
 
 ### ${PLACES[4].name}
 ${
@@ -150,6 +209,7 @@ ${
     ? "Осадки могут испортить отдых — лучше выбрать другой день."
     : "Можно ехать — условия благоприятные для отдыха на Пангане."
 }
+    ${PLACES[4].cta}
 
 ### ${PLACES[5].name}
 ${
@@ -157,6 +217,7 @@ ${
     ? "Ветер может осложнить морскую прогулку — рекомендуется перенести."
     : "Отличный день для поездки на остров Ланга."
 }
+    ${PLACES[5].cta}
 
 ### ${PLACES[6].name}
 ${
@@ -164,6 +225,7 @@ ${
     ? "Вечером возможны кратковременные осадки — возьмите лёгкую куртку."
     : "Отличная погода для прогулки по Бангла Роуд."
 }
+    ${PLACES[6].cta}
 
 ##
 ---

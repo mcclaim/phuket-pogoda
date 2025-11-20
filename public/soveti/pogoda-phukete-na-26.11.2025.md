@@ -1,18 +1,18 @@
 ---
 title: "Погода на Пхукете на 26.11.2025: советы туристам и рекомендации по экскурсиям"
-desc: "Прогноз на 26.11.2025: температура 22.3–23.5°C, осадки 6.4 мм, ветер 15.6 км/ч. Советы туристам и рекомендации по экскурсиям."
+desc: "Прогноз на 26.11.2025: температура 26.7–29.4°C, осадки 4.2 мм, ветер 16.4 км/ч. Советы туристам и рекомендации по экскурсиям."
 date: "26.11.2025"
-img: "https://images.unsplash.com/photo-1687842540191-26c2c7917471?ixid=M3w4MDE4MDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjMwMzgyMjV8&ixlib=rb-4.1.0&w=700&h=300&q=80&fit=crop&auto=format"
+img: "https://images.unsplash.com/photo-1589554785258-f9bcdacb357d?ixid=M3w4MDE4MDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjM2MzU2MjR8&ixlib=rb-4.1.0&w=700&h=300&q=80&fit=crop&auto=format"
 slug: "pogoda-phukete-na-26.11.2025"
 ---
 
 >## Прогноз погоды на 26.11.2025
 
-На Пхукете ожидается температура от **22.3°C** до **23.5°C**.  
-Уровень осадков — **6.4 мм**, ветер максимум **15.6 км/ч**, УФ-индекс: **1.35**.
+На Пхукете ожидается температура от **26.7°C** до **29.4°C**.  
+Уровень осадков — **4.2 мм**, ветер максимум **16.4 км/ч**, УФ-индекс: **3.55**.
 
 ## Что надеть туристам?
-Советуем взять зонт или лёгкую непромокаемую куртку.
+Лёгкая летняя одежда и солнцезащитный крем — лучший выбор.
 УФ-индекс умеренный — лёгкая защита достаточна.
 
 ##
@@ -21,24 +21,31 @@ slug: "pogoda-phukete-na-26.11.2025"
 
 ### Можно ли ехать в остров Пхи-Пхи?
 Погода благоприятная для поездки на остров.
+    [Забронируйте тур на Пхи-Пхи по выгодной цене](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163550&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F64800-phi-phi-khai-islands-one-day-tour%2F) — лучшие экскурсии и трансферы!
 
 ### Можно ли ехать в остров Джеймса Бонда?
 Отличная погода для фото и прогулки к месту Джеймса Бонда.
+    [Забронируйте тур на остров Джеймса Бонда](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163554&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F3227-james-bond-day-tour-big-boat-longtail-speedboat%2F) — места ограничены!
 
 ### Можно ли ехать в Симиланские острова?
 Можно ехать — море ожидается спокойным.
+    [Забронируйте тур на Симиланские острова](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163933&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F99532-similan-phuket-1-day-hop-on-off-boat-tour-speedboat-khao-lak%2F) — снорклинг, дайвинг и лучшие цены!
 
 ### Можно ли ехать в остров Самуи?
 Погода позволяет — поездка на Самуи будет комфортной.
+    [Забронируйте тур на Самуи](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163933&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F99532-similan-phuket-1-day-hop-on-off-boat-tour-speedboat-khao-lak%2F) — пляжи, экскурсии и трансферы по выгодным ценам!
 
 ### Можно ли ехать в остров Панган?
 Можно ехать — условия благоприятные для отдыха на Пангане.
+    [Забронируйте тур на Панган](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163948&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F91504-phuket-must-see-atv-experience-phuket-join-half-day-tour%2F) — Full Moon Party и тихие бухты ждут вас!
 
 ### Можно ли ехать в остров Ланга?
 Отличный день для поездки на остров Ланга.
+    [Забронируйте тур на Ланга](https://www.klook.com/ru/city/106-langa/) — спокойный рай и лучшие цены на экскурсии!
 
 ### Можно ли погулять в Бангла роуд?
-Вечером возможны кратковременные осадки — возьмите лёгкую куртку.
+Отличная погода для прогулки по Бангла Роуд.
+    [Забронируйте экскурсию на Бангла Роуд](https://affiliate.klook.com/redirect?aid=104554&aff_adid=1163953&k_site=https%3A%2F%2Fwww.klook.com%2Fru%2Factivity%2F292-simon-cabaret-show-phuket%2F) — ночная жизнь и развлечения по выгодным ценам!
 
 ##
 ---

@@ -1,3 +1,4 @@
+import { parseDate } from "#shared/utils/date.helper";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
@@ -26,7 +27,7 @@ export default defineEventHandler(async () => {
   });
 
   // сортируем по дате (если есть)
-  articles.sort((a, b) => (a.date > b.date ? 1 : -1));
+  articles.sort((a, b) => parseDate(a.date) - parseDate(b.date));
 
   return articles;
 });
