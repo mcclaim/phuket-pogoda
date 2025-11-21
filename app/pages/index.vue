@@ -11,6 +11,8 @@
     <section v-if="!pending && forecast.hourly">
       <HourlyForecast :hours="forecast.hourly" />
     </section>
+
+    <AdsTripsterLeftWidget />
   </div>
 </template>
 <script setup lang="ts">

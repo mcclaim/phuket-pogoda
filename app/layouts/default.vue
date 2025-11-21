@@ -8,6 +8,7 @@
     >
       <!-- левый сайдбар -->
       <ClientOnly>
+        <!-- <AdsTripsterLeftWidget /> -->
         <AdUnit
           class="ads-1"
           styleClass="ads-slot sidebar"

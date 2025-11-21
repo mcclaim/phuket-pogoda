@@ -9,13 +9,13 @@
         <p class="text-gray-200 text-sm">Дата: {{ date }}</p>
       </div>
       <h1
-        class="text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg text-balance"
+        class="text-2xl md:text-3xl lg:text-5xl font-extrabold text-lime-300 text-shadow-lg text-balance text-center"
       >
         {{ blogData.title }}
       </h1>
     </header>
 
-    <div class="flex justify-center items-center mb-6" v-if="blogData.img">
+    <div class="flex justify-center items-center mb-4" v-if="blogData.img">
       <NuxtImg
         densities="1x"
         class="rounded-xl"
@@ -36,10 +36,7 @@
       class="article-data text-shadow-lg text-balance"
     />
 
-    <!-- <ContentRenderer
-      class="article-data font-medium text-shadow-lg text-balance"
-      :value="doc"
-    /> -->
+    <AdsTripsterLeftWidget />
   </article>
 </template>
 
@@ -61,11 +58,16 @@ article .article-data {
   p {
     a {
       text-decoration: underline;
+      color: #8ddeff;
 
       &:hover {
         color: #04b7ff;
       }
     }
+  }
+
+  hr {
+    margin-top: 10px;
   }
 }
 </style>

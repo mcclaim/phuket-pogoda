@@ -272,23 +272,26 @@ watch(
     class="mobile-forecast-menu container"
     v-if="articleMenuActive(route, ['/pogoda'])"
   >
-    <div class="mobile-forecast-menu__container">
+    <div class="relative rounded-full overflow-hidden">
       <div
-        class="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-gray-200/80 to-transparent dark:from-gray-800/80"
+        class="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-gray-400/80 to-transparent dark:from-gray-800/80"
       ></div>
-      <NuxtLink
-        v-for="nav in NAVIGATION_CONSTANTS.FORECAST.children"
-        :key="nav.route"
-        :to="nav.route"
-        :class="[
-          'mobile-forecast-menu__item',
-          {
-            active: articleMenuActive(route, [nav.route]),
-          },
-        ]"
-      >
-        {{ nav.title }}
-      </NuxtLink>
+
+      <div class="mobile-forecast-menu__container">
+        <NuxtLink
+          v-for="nav in NAVIGATION_CONSTANTS.FORECAST.children"
+          :key="nav.route"
+          :to="nav.route"
+          :class="[
+            'mobile-forecast-menu__item',
+            {
+              active: articleMenuActive(route, [nav.route]),
+            },
+          ]"
+        >
+          {{ nav.title }}
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
@@ -314,7 +317,7 @@ watch(
   }
 
   &__link {
-    @apply text-gray-50 bg-opacity-30 sm:bg-opacity-0 py-4 px-4 transition font-medium flex items-center hover:bg-white hover:bg-opacity-30;
+    @apply text-gray-50 bg-opacity-30 sm:bg-opacity-0 py-4 px-4 transition font-medium flex items-center hover:bg-white hover:bg-opacity-30 text-left;
 
     &:has(~ .header__dropdown) {
       @media screen and (max-width: 767px) {
@@ -344,7 +347,7 @@ watch(
 }
 
 .mobile-forecast-menu {
-  @apply xl:max-w-7xl mx-auto md:hidden px-4;
+  @apply xl:max-w-7xl mx-auto md:hidden p-4;
 
   &__container {
     @apply bg-opacity-50 backdrop-blur-sm flex gap-1 rounded-full z-10 relative overflow-auto py-2 px-4;

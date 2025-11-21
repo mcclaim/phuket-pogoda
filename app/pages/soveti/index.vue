@@ -7,44 +7,31 @@
     </h1>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="col" v-for="article of articles" :key="article.id">
-        <BlogCard
-          :blog-data="{
-            title: article.title,
-            desc: article.desc,
-            link: article.path,
-            img: article.img,
-          }"
-        />
-      </div>
+      <template v-for="(article, index) in articles" :key="article.id">
+        <div class="col">
+          <BlogCard
+            :blog-data="{
+              title: article.title,
+              desc: article.desc,
+              link: article.path,
+              img: article.img,
+            }"
+          />
+        </div>
+
+        <AdsTripsterInArticleList v-if="index === 2" />
+
+        <div class="col sm:col-span-2 lg:col-span-3" v-if="index === 8">
+          <AdsKlookWidget />
+        </div>
+      </template>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import type { ContentCollectionItem } from "@nuxt/content";
-
-const route = useRoute();
-// const articles = ref<BlogListData[]>([]);
-
 const { data: articles } = await useAsyncData("soveti-list", () =>
   $fetch<BlogListData[]>("/api/soveti")
 );
-
-/* const { data: articleData } = await useAsyncData(route.path, () => {
-  return queryCollection("content")
-    .where("path", "LIKE", `${route.path}/%`)
-    .all() as Promise<ContentCollectionItem[]>;
-});
-
-if (articleData.value) {
-  articles.value = articleData.value.map((article) => ({
-    title: article?.title || "Интересное место на Пхукете",
-    desc: article?.meta?.desc || "Описание внутри статьи",
-    path: article.path || "/",
-    id: article.id || Math.random().toString(36),
-    img: typeof article?.meta?.img === "string" ? article.meta.img : null,
-  }));
-} */
 
 useSeoHead({
   title: "Советы туристам Пхукета на неделю: одежда, вещи, пляж",

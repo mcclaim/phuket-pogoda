@@ -4,7 +4,7 @@ export const NAVIGATION_CONSTANTS = {
     route: "/",
   },
   FORECAST: {
-    title: "Прогноз",
+    title: "Прогноз на другие дни",
     route: "/pogoda",
     children: [
       {

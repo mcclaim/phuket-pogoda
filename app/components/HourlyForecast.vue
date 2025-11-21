@@ -51,7 +51,7 @@ function goNext() {
       <!-- Right shadow -->
       <div
         v-if="showRightShadow"
-        class="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-gray-200/80 to-transparent dark:from-gray-800/80"
+        class="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-gray-400/80 to-transparent dark:from-gray-800/80"
       ></div>
 
       <!-- Навигационные кнопки -->

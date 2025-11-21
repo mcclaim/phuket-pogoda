@@ -66,6 +66,20 @@ export default defineNuxtConfig({
           async: true,
           crossorigin: "anonymous",
         },
+        // {
+        //   // если нужно подключить внешний src
+        //   src: "https://phuket-pogoda.ru/sw.js",
+        //   async: true,
+        //   crossorigin: "anonymous",
+        // },
+        // {
+        //   // если нужно подключить внешний src
+        //   src: "https://fpyf8.com/88/tag.min.js",
+        //   async: true,
+        //   "data-zone": "187075",
+        //   "data-cfasync": "false",
+        //   crossorigin: "anonymous",
+        // },
         // если Google просит inline script (реже): можно добавить { children: "название_скрипта" }
       ],
     },
